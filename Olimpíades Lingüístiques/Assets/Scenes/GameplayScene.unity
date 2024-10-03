@@ -1731,6 +1731,8 @@ GameObject:
   - component: {fileID: 1895607375}
   - component: {fileID: 1895607374}
   - component: {fileID: 1895607373}
+  - component: {fileID: 1895607378}
+  - component: {fileID: 1895607377}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1823,6 +1825,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1895607377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895607372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71ab385e445bec4484002afeddd7906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSlider: {fileID: 1606818420}
+  timeSubtract: 0
+  timeIncrease: 0
+--- !u!114 &1895607378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895607372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2927e1a791adc4d9668a3d0149835f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctWords:
+  - chipiron
+  - tron
+  wrongWords:
+  - chipiro
+  - tro
+  leftButton: {fileID: 1218309784}
+  rightButton: {fileID: 268871186}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
