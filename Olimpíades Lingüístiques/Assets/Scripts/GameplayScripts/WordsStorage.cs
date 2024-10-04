@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,55 +8,88 @@ using TMPro;
 public class WordsStorage : MonoBehaviour
 {
     [SerializeField]
-    string[] correctWords;
+    TextAsset easyQuestionsData;
+
     [SerializeField]
-    string[] wrongWords;
+    TextAsset hardQuestionsData;
+
+    string[,] easyQuestions;
+
+    string[,] hardQuestions;
 
     [SerializeField]
     Button leftButton;
     [SerializeField]
     Button rightButton;
 
-    bool leftIsCorrect;
+    int correctButton;
 
-    public bool getIfLeftCorrect()
+    public int GetCorrectButton()
     {
-        return leftIsCorrect;
+        return correctButton;
     }
 
     void Start()
     {
-        RandomWordSelector();
+        SetEasyQuestions();
+        SetHardQuestions();
+        EasyRandomWordSelector();
     }
 
-    void Update()
+    private void SetHardQuestions()
+    {
+        string[] data = hardQuestionsData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+
+        hardQuestions = new string[data.Length / 3, 2];
+        int i = 0;
+
+        for (int row = 0; row < data.Length / 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                hardQuestions[row, col] = data[i];
+                i++;
+            }
+        }
+    }
+
+    private void SetEasyQuestions()
     {
         
+        string[] data = easyQuestionsData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+
+        easyQuestions = new string[data.Length / 2, 2];
+        int i = 0;
+
+        for (int row = 0; row < data.Length/2; row++)
+        {
+            for (int col = 0; col < 2; col++)
+            {
+                easyQuestions[row, col] = data[i];
+                i++;
+            }
+        }
     }
 
-    private void RandomWordSelector()
+    private void EasyRandomWordSelector()
     {
-        string[] leftButtonArray;
-        string[] rightButtonArray;
 
-        if (Random.Range(0, 2) == 0)
+        int randomQuestionNum = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
+
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
-            leftButtonArray = correctWords;
-            rightButtonArray = wrongWords;
+            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 0];
+            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 1];
 
-            leftIsCorrect = true;
+            correctButton = 1;
         }
         else
         {
-            leftButtonArray = wrongWords;
-            rightButtonArray = correctWords;
+            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 1];
+            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 0];
 
-            leftIsCorrect = false;
+            correctButton = 2;
         }
 
-        int wordNumber = Random.Range(0, leftButtonArray.Length);
-
-        leftButton.GetComponentInChildren<TMP_Text>().text = leftButtonArray[wordNumber];
-        rightButton.GetComponentInChildren<TMP_Text>().text = rightButtonArray[wordNumber];
     }
 }

@@ -24,29 +24,20 @@ public class WordSelection : MonoBehaviour
         
     }
 
-    public void WordSelected(bool leftButton)
+    public void WordSelected(int buttonPressed)
     {
-        if (wordsStorageScript.getIfLeftCorrect())
+        if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
-            if (leftButton)
-            {
-                //CorrectAnswer(AddPonits&AddTime&ChangeWords)
-            }
-            else
-            {
-                //WrongAnswer(ChangeWords)
-            }
+            Debug.Log("tt acertao");
+            //sube tiempo, puntos y animacion ganas con evento que lleva a cambiar palabras
+            // si has superado x puntos o x palabras acertadas, pasar a dificiles
         }
         else
         {
-            if (leftButton)
-            {
-                //WrongAnswer(ChangeWords)
-            }
-            else
-            {
-                //CorrectAnswer(AddPonits&AddTime&ChangeWords)
-            }
+            Debug.Log("has perdio");
+            // animacion pierdes con evento que lleva a cambiar palabras
         }
+        //TIEMPO NO BAJA CUANDO ESTA EN CURSO ANIMACION!!!!!!!!
+
     }
 }

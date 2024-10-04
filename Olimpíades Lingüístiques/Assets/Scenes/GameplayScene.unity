@@ -207,8 +207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 268871187}
   - component: {fileID: 268871186}
   m_Layer: 5
-  m_Name: ButtonB
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,7 +705,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268871187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1895607377}
+        m_TargetAssemblyTypeName: WordSelection, Assembly-CSharp
+        m_MethodName: WordSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &268871187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,8 +1045,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1378,7 +1390,7 @@ GameObject:
   - component: {fileID: 1218309785}
   - component: {fileID: 1218309784}
   m_Layer: 5
-  m_Name: ButtonA
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218309785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1895607377}
+        m_TargetAssemblyTypeName: WordSelection, Assembly-CSharp
+        m_MethodName: WordSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1218309785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,12 +1876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2927e1a791adc4d9668a3d0149835f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctWords:
-  - chipiron
-  - tron
-  wrongWords:
-  - chipiro
-  - tro
+  easyQuestionsData: {fileID: 4900000, guid: 0deb39c164fc97c448efa79295b54b92, type: 3}
+  hardQuestionsData: {fileID: 0}
   leftButton: {fileID: 1218309784}
   rightButton: {fileID: 268871186}
 --- !u!1660057539 &9223372036854775807
