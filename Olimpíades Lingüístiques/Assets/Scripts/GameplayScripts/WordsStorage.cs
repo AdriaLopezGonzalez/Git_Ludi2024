@@ -29,10 +29,21 @@ public class WordsStorage : MonoBehaviour
         return correctButton;
     }
 
+    public void disableButtons()
+    {
+        leftButton.interactable = false;
+        rightButton.interactable = false;
+    }
+    public void enableButtons()
+    {
+        leftButton.interactable = true;
+        rightButton.interactable = true;
+    }
+
     void Start()
     {
         SetEasyQuestions();
-        SetHardQuestions();
+        //SetHardQuestions();
         EasyRandomWordSelector();
     }
 
@@ -40,7 +51,7 @@ public class WordsStorage : MonoBehaviour
     {
         string[] data = hardQuestionsData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
 
-        hardQuestions = new string[data.Length / 3, 2];
+        hardQuestions = new string[data.Length / 3, 3];
         int i = 0;
 
         for (int row = 0; row < data.Length / 3; row++)

@@ -1737,9 +1737,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1376924083}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 120
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 120
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1861,6 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71ab385e445bec4484002afeddd7906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsText: {fileID: 240826211}
+  points: 0
+  pointIncrease: 0
   timeSlider: {fileID: 1606818420}
   timeSubtract: 0
   timeIncrease: 0
@@ -1877,7 +1880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   easyQuestionsData: {fileID: 4900000, guid: 0deb39c164fc97c448efa79295b54b92, type: 3}
-  hardQuestionsData: {fileID: 0}
+  hardQuestionsData: {fileID: 4900000, guid: d912426bb12117c4d8ace403a0eecdb6, type: 3}
   leftButton: {fileID: 1218309784}
   rightButton: {fileID: 268871186}
 --- !u!1660057539 &9223372036854775807
