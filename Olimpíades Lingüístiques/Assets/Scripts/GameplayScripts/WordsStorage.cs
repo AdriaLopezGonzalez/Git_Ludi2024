@@ -85,22 +85,31 @@ public class WordsStorage : MonoBehaviour
     private void EasyRandomWordSelector()
     {
 
-        int randomQuestionNum = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
+        int randomQuestionRow = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
 
         if (UnityEngine.Random.Range(0, 2) == 0)
         {
-            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 0];
-            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 1];
+            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 0];
+            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
 
             correctButton = 1;
         }
         else
         {
-            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 1];
-            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionNum, 0];
+            leftButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
+            rightButton.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 0];
 
             correctButton = 2;
         }
 
+    }
+
+    public void animationEnded()
+    {
+        enableButtons();
+
+        EasyRandomWordSelector();
+
+        GetComponent<WordSelection>().ResumeTime();
     }
 }

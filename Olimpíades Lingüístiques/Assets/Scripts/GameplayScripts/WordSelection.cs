@@ -8,7 +8,6 @@ public class WordSelection : MonoBehaviour
 {
     [SerializeField]
     TMP_Text pointsText;
-    [SerializeField]
     int points;
     [SerializeField]
     int pointIncrease;
@@ -27,12 +26,24 @@ public class WordSelection : MonoBehaviour
 
     WordsStorage wordsStorageScript;
 
+    Animation buttonsAnimator;
+    [SerializeField]
+    AnimationClip correctAnswerAnimation;
+    [SerializeField]
+    AnimationClip wrongAnswerAnimation;
+
+    public void ResumeTime()
+    {
+        timeStop = false;
+    }
+
     void Start()
     {
         wordsStorageScript = GetComponent<WordsStorage>();
         timeSlider.value = timeSlider.maxValue;
         points = 0;
         pointsText.text = points.ToString() + " Punts";
+        buttonsAnimator = GetComponent<Animation>();
     }
 
     void Update()
@@ -48,7 +59,7 @@ public class WordSelection : MonoBehaviour
             }
             else
             {
-                timeSlider.value -= 1 * Time.deltaTime;
+                timeSlider.value -= timeSubtract * Time.deltaTime;
             }
         }
     }
@@ -76,6 +87,8 @@ public class WordSelection : MonoBehaviour
                 timeSlider.value = timeSlider.maxValue;
             else
                 timeSlider.value += timeIncrease;
+
+            PlayButtonsAnimation(true);
             //sube tiempo, puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
             // si has superado x puntos o x palabras acertadas, pasar a dificiles
         }
@@ -85,7 +98,17 @@ public class WordSelection : MonoBehaviour
 
             correctWordsStreak = 0;
             pointsMultiplier = 1;
+
+            PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
+    }
+
+    void PlayButtonsAnimation(bool correctAnswer)
+    {
+        if (correctAnswer)
+            buttonsAnimator.Play(correctAnswerAnimation.name);
+        else
+            buttonsAnimator.Play(wrongAnswerAnimation.name);
     }
 }

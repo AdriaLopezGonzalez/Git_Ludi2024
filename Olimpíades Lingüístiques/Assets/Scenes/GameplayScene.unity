@@ -1757,6 +1757,7 @@ GameObject:
   - component: {fileID: 1895607373}
   - component: {fileID: 1895607378}
   - component: {fileID: 1895607377}
+  - component: {fileID: 1895607379}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1862,11 +1863,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 240826211}
-  points: 0
-  pointIncrease: 0
+  pointIncrease: 50
   timeSlider: {fileID: 1606818420}
-  timeSubtract: 0
-  timeIncrease: 0
+  timeSubtract: 3
+  timeIncrease: 2
+  correctAnswerAnimation: {fileID: 7400000, guid: 56b51d112b36bac46adc383e4ea70653, type: 2}
+  wrongAnswerAnimation: {fileID: 7400000, guid: b65fd1ecba205774ca2593bdf68f1613, type: 2}
 --- !u!114 &1895607378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1883,6 +1885,23 @@ MonoBehaviour:
   hardQuestionsData: {fileID: 4900000, guid: d912426bb12117c4d8ace403a0eecdb6, type: 3}
   leftButton: {fileID: 1218309784}
   rightButton: {fileID: 268871186}
+--- !u!111 &1895607379
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895607372}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 56b51d112b36bac46adc383e4ea70653, type: 2}
+  - {fileID: 7400000, guid: b65fd1ecba205774ca2593bdf68f1613, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
