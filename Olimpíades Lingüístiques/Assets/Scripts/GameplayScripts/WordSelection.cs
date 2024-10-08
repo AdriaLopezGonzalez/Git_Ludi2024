@@ -11,6 +11,10 @@ public class WordSelection : MonoBehaviour
     int points;
     [SerializeField]
     int pointIncrease;
+    [SerializeField]
+    int pointsToChangeDiff;
+
+    bool changeToHard = false;
 
     float pointsMultiplier = 1;
     int correctWordsStreak = 0;
@@ -20,7 +24,9 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     float timeSubtract;
     [SerializeField]
-    float timeIncrease;
+    float timeIncrease_WordAnswered;
+    [SerializeField]
+    float timeSubstract_WordMissed;
 
     bool timeStop;
 
@@ -31,6 +37,15 @@ public class WordSelection : MonoBehaviour
     AnimationClip correctAnswerAnimation;
     [SerializeField]
     AnimationClip wrongAnswerAnimation;
+    [SerializeField]
+    AnimationClip correctAnswerHardAnimation;
+    [SerializeField]
+    AnimationClip wrongAnswerHardAnimation;
+
+    [SerializeField]
+    GameObject twoButtons_Obj;
+    [SerializeField]
+    GameObject threeButtons_Obj;
 
     public void ResumeTime()
     {
@@ -83,10 +98,13 @@ public class WordSelection : MonoBehaviour
             pointsText.text = points.ToString() + " Punts";
 
 
-            if ((timeSlider.value += timeIncrease) > timeSlider.maxValue)
+            if ((timeSlider.value += timeIncrease_WordAnswered) > timeSlider.maxValue)
                 timeSlider.value = timeSlider.maxValue;
             else
-                timeSlider.value += timeIncrease;
+                timeSlider.value += timeIncrease_WordAnswered;
+
+            if (points >= pointsToChangeDiff)
+                changeToHard = true;
 
             PlayButtonsAnimation(true);
             //sube tiempo, puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
@@ -99,6 +117,11 @@ public class WordSelection : MonoBehaviour
             correctWordsStreak = 0;
             pointsMultiplier = 1;
 
+            if ((timeSlider.value -= timeSubstract_WordMissed) < timeSlider.minValue)
+                timeSlider.value = timeSlider.minValue;
+            else
+                timeSlider.value -= timeSubstract_WordMissed;
+
             PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
@@ -106,9 +129,22 @@ public class WordSelection : MonoBehaviour
 
     void PlayButtonsAnimation(bool correctAnswer)
     {
-        if (correctAnswer)
-            buttonsAnimator.Play(correctAnswerAnimation.name);
+        if (changeToHard)
+        {
+            twoButtons_Obj.SetActive(false);
+            threeButtons_Obj.SetActive(true);
+
+            if (correctAnswer)
+                buttonsAnimator.Play(correctAnswerHardAnimation.name);
+            else
+                buttonsAnimator.Play(wrongAnswerHardAnimation.name);
+        }
         else
-            buttonsAnimator.Play(wrongAnswerAnimation.name);
+        {
+            if (correctAnswer)
+                buttonsAnimator.Play(correctAnswerAnimation.name);
+            else
+                buttonsAnimator.Play(wrongAnswerAnimation.name);
+        }
     }
 }

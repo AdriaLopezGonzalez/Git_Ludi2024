@@ -2705,8 +2705,9 @@ MonoBehaviour:
   pointsText: {fileID: 240826211}
   pointIncrease: 50
   timeSlider: {fileID: 1606818420}
-  timeSubtract: 5
-  timeIncrease: 2
+  timeSubtract: 15
+  timeIncrease_WordAnswered: 5
+  timeSubstract_WordMissed: 5
   correctAnswerAnimation: {fileID: 7400000, guid: 56b51d112b36bac46adc383e4ea70653, type: 2}
   wrongAnswerAnimation: {fileID: 7400000, guid: b65fd1ecba205774ca2593bdf68f1613, type: 2}
 --- !u!114 &1895607378
