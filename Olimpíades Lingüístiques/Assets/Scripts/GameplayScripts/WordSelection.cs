@@ -56,6 +56,7 @@ public class WordSelection : MonoBehaviour
     {
         wordsStorageScript = GetComponent<WordsStorage>();
         timeSlider.value = timeSlider.maxValue;
+        timeSlider.enabled = false;
         points = 0;
         pointsText.text = points.ToString() + " Punts";
         buttonsAnimator = GetComponent<Animation>();

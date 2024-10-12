@@ -2704,12 +2704,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsText: {fileID: 240826211}
   pointIncrease: 50
+  pointsToChangeDiff: 100
   timeSlider: {fileID: 1606818420}
-  timeSubtract: 15
+  timeSubtract: 13
   timeIncrease_WordAnswered: 5
-  timeSubstract_WordMissed: 5
+  timeSubstract_WordMissed: 3
   correctAnswerAnimation: {fileID: 7400000, guid: 56b51d112b36bac46adc383e4ea70653, type: 2}
   wrongAnswerAnimation: {fileID: 7400000, guid: b65fd1ecba205774ca2593bdf68f1613, type: 2}
+  correctAnswerHardAnimation: {fileID: 0}
+  wrongAnswerHardAnimation: {fileID: 0}
+  twoButtons_Obj: {fileID: 760407417}
+  threeButtons_Obj: {fileID: 1011173450}
 --- !u!114 &1895607378
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class WordsStorage : MonoBehaviour
     void Start()
     {
         SetEasyQuestions();
-        //SetHardQuestions();
+        SetHardQuestions();
         EasyRandomWordSelector();
     }
 
