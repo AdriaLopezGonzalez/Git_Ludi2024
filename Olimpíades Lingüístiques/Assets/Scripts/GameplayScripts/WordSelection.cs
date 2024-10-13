@@ -42,10 +42,6 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     AnimationClip wrongAnswerHardAnimation;
 
-    [SerializeField]
-    GameObject twoButtons_Obj;
-    [SerializeField]
-    GameObject threeButtons_Obj;
 
     public void ResumeTime()
     {
@@ -104,8 +100,11 @@ public class WordSelection : MonoBehaviour
             else
                 timeSlider.value += timeIncrease_WordAnswered;
 
-            if (points >= pointsToChangeDiff)
+            if ((points >= pointsToChangeDiff) && !changeToHard)
+            {
+
                 changeToHard = true;
+            }
 
             PlayButtonsAnimation(true);
             //sube tiempo, puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
@@ -132,8 +131,6 @@ public class WordSelection : MonoBehaviour
     {
         if (changeToHard)
         {
-            twoButtons_Obj.SetActive(false);
-            threeButtons_Obj.SetActive(true);
 
             if (correctAnswer)
                 buttonsAnimator.Play(correctAnswerHardAnimation.name);

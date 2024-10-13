@@ -13,6 +13,12 @@ public class WordsStorage : MonoBehaviour
     [SerializeField]
     TextAsset hardQuestionsData;
 
+    [SerializeField]
+    GameObject twoButtons_Obj;
+    [SerializeField]
+    GameObject threeButtons_Obj;
+
+
     string[,] easyQuestions;
 
     string[,] hardQuestions;
@@ -42,11 +48,17 @@ public class WordsStorage : MonoBehaviour
     public void disableButtons()
     {
         leftButton_EasyWords.interactable = false;
+        rightButton_EasyWords.interactable = false;
+        leftButton_HardWords.interactable = false;
+        middleButton_HardWords.interactable = false;
         rightButton_HardWords.interactable = false;
     }
     public void enableButtons()
     {
         leftButton_EasyWords.interactable = true;
+        rightButton_EasyWords.interactable = true;
+        leftButton_HardWords.interactable = true;
+        middleButton_HardWords.interactable = true;
         rightButton_HardWords.interactable = true;
     }
 
@@ -128,58 +140,58 @@ public class WordsStorage : MonoBehaviour
         int randomQuestionRow = UnityEngine.Random.Range(0, hardQuestions.GetLength(0));
         while (usedHardRows.Contains(randomQuestionRow))
         {
-            randomQuestionRow = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
+            randomQuestionRow = UnityEngine.Random.Range(0, hardQuestions.GetLength(0));
         }
         usedHardRows.Add(randomQuestionRow);
 
-        if (usedEasyRows.Count >= hardQuestions.GetLength(0))
-            usedEasyRows.Clear();
+        if (usedHardRows.Count >= hardQuestions.GetLength(0))
+            usedHardRows.Clear();
 
         int randomQuestionColumn = UnityEngine.Random.Range(0, 3);
         if (randomQuestionColumn == 0)
         {
-            leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 0];
+            leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 0];
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
-                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
-                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
+                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
             }
             else
             {
-                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
-                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
+                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
             }
 
             correctButton = 1;
         }
         else if (randomQuestionColumn == 1)
         {
-            middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 0];
+            middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 0];
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
-                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
-                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
+                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
             }
             else
             {
-                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
-                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
+                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+                rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
             }
 
             correctButton = 2;
         }
         else
         {
-            rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 0];
+            rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 0];
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
-                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
-                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
+                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
             }
             else
             {
-                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 2];
-                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = easyQuestions[randomQuestionRow, 1];
+                leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+                middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
             }
 
             correctButton = 3;
@@ -187,11 +199,23 @@ public class WordsStorage : MonoBehaviour
 
     }
 
-    public void animationEnded()
+    public void animationEasyEnded()
     {
         enableButtons();
 
         EasyRandomWordSelector();
+
+        GetComponent<WordSelection>().ResumeTime();
+    }
+
+    public void animationHardEnded()
+    {
+        twoButtons_Obj.SetActive(false);
+        threeButtons_Obj.SetActive(true);
+
+        enableButtons();
+
+        HardRandomWordSelector();
 
         GetComponent<WordSelection>().ResumeTime();
     }
