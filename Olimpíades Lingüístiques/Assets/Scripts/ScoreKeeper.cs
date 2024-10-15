@@ -9,13 +9,23 @@ public class ScoreKeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnterNewScore("GTS", 50);
-        //EnterNewScore("TET", 550);
-        //EnterNewScore("PTO", 100);
+        /*EnterNewScore("GTS", 50);
+        EnterNewScore("TET", 550);
+        EnterNewScore("PTO", 100);
+        EnterNewScore("FIT", 120);
+        EnterNewScore("SOK", 90);
+        EnterNewScore("KIK", 300);
+        EnterNewScore("ALG", 549);
+        EnterNewScore("JJM", 600);
+        EnterNewScore("PFB", 9000);
+        EnterNewScore("POP", 5);
+        EnterNewScore("GTS", 10);
 
-        Debug.Log(scoreList[0].playerName + " " + scoreList[0].playerScore);
-        Debug.Log(scoreList[1].playerName + " " + scoreList[0].playerScore);
-        Debug.Log(scoreList[2].playerName + " " + scoreList[0].playerScore);
+        for (int i = 0; i < scoreList.Length; i++)
+        {
+            Debug.Log(i+1 + " = " + scoreList[i].playerName + " " + scoreList[i].playerScore);
+        }
+        */
     }
 
     // Update is called once per frame
@@ -32,6 +42,7 @@ public class ScoreKeeper : MonoBehaviour
             if (ReferenceEquals(scoreList[i], null))
             {
                 scoreList[i] = new Score(name, score);
+                //Debug.Log("round: "+ i + ", name: "+scoreList[i].playerName+ " is " + ReferenceEquals(scoreList[i], null));
 
 
                 RearrangeOrder();
@@ -41,11 +52,12 @@ public class ScoreKeeper : MonoBehaviour
 
             else if (i == scoreList.Length - 1)
             {
-                scoreList[i] = new Score(name, score);
+                if (score > scoreList[i].playerScore)
+                {
+                    scoreList[i] = new Score(name, score);
 
-
-
-                RearrangeOrder();
+                    RearrangeOrder();
+                }
             }
 
         }
@@ -53,23 +65,20 @@ public class ScoreKeeper : MonoBehaviour
 
     private void RearrangeOrder()
     {
-        //Array.Sort(scoreList[].playerScore);
+
         int[] scoreArray = new int[scoreList.Length];
 
         for (int i = 0; i < scoreList.Length; i++)
         {
-            if (ReferenceEquals(scoreList[i], null))
-            {
-                //scoreArray[i] = -1;
-            }
-            else
+            if ((!ReferenceEquals(scoreList[i], null)) && (scoreArray[i] == 0))
             {
                 scoreArray[i] = scoreList[i].playerScore;
-                Debug.Log(scoreList[i].playerName + " hemos entrao "+ scoreArray[i]);
+                //Debug.Log("ronda" + i + " jugador:" + scoreList[i].playerName + " hemos entrao "+ scoreArray[i]);
             }
         }
 
         Array.Sort(scoreArray);
+        Array.Reverse(scoreArray);
 
         string[] nameArray = new string[scoreList.Length];
 
@@ -95,16 +104,20 @@ public class ScoreKeeper : MonoBehaviour
             }
         }
 
-            //fer una array buida i omplirla de tots els numeros
-            //ordenar aquella array
-            //fer una altra array de strings amb el mateix ordre i assignar noms
-            //assignar a la array scoreList el ordre correcte
+        //fer una array buida i omplirla de tots els numeros
+        //ordenar aquella array
+        //fer una altra array de strings amb el mateix ordre i assignar noms
+        //assignar a la array scoreList el ordre correcte
 
-        }
+    }
 
-    private string GetScoreOnPosition(int position)
+    public int GetScoreOnPosition(int position)
     {
+        return scoreList[position].playerScore;
+    }
 
-        return "si";
+    private string GetNameOnPosition(int position)
+    {
+        return scoreList[position].playerName;
     }
 }
