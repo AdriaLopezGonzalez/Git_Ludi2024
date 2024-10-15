@@ -64,7 +64,6 @@ public class WordSelection : MonoBehaviour
         {
             if(timeSlider.value <= timeSlider.minValue)
             {
-                Debug.Log("has perdio por time");
                 wordsStorageScript.disableButtons();
 
                 //enseñar pantalla que te diga si quieres reiniciar partida o salir al menu
@@ -144,5 +143,10 @@ public class WordSelection : MonoBehaviour
             else
                 buttonsAnimator.Play(wrongAnswerAnimation.name);
         }
+    }
+
+    public int GetPoints()
+    {
+        return points;
     }
 }
