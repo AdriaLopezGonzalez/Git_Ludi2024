@@ -18,10 +18,13 @@ public class WordsStorage : MonoBehaviour
     [SerializeField]
     GameObject threeButtons_Obj;
 
-
     string[,] easyQuestions;
-
     string[,] hardQuestions;
+
+    int easyQuestionsCounter = 0;
+    int hardQuestionsCounter = 0;
+    [SerializeField]
+    int maxCounterValue = 5;
 
     List<int> usedEasyRows = new List<int>();
     List<int> usedHardRows = new List<int>();
@@ -39,6 +42,16 @@ public class WordsStorage : MonoBehaviour
     Button rightButton_HardWords;
 
     int correctButton;
+
+    [Header("Palabra Random")]
+    [SerializeField]
+    TextAsset randomWordsData;
+    string[,] randomWords;
+    List<int> usedRandomWordsRows = new List<int>();
+    [SerializeField]
+    Button randomWordsButton;
+    [SerializeField]
+    int wordPressedMultiplyer = 1;
 
     public int GetCorrectButton()
     {
@@ -104,8 +117,24 @@ public class WordsStorage : MonoBehaviour
         }
     }
 
+    public bool EasyQuestionPlaced()
+    {
+        if(easyQuestionsCounter >= maxCounterValue)
+            return false;
+        else if(hardQuestionsCounter >= maxCounterValue)
+            return true;
+        else
+        {
+            if(UnityEngine.Random.Range(0, 2) == 0)
+                return true;
+            else
+                return false;
+        }
+    }
+
     private void EasyRandomWordSelector()
     {
+        easyQuestionsCounter++;
 
         int randomQuestionRow = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
         while (usedEasyRows.Contains(randomQuestionRow))
@@ -136,6 +165,7 @@ public class WordsStorage : MonoBehaviour
 
     private void HardRandomWordSelector()
     {
+        hardQuestionsCounter++;
 
         int randomQuestionRow = UnityEngine.Random.Range(0, hardQuestions.GetLength(0));
         while (usedHardRows.Contains(randomQuestionRow))
