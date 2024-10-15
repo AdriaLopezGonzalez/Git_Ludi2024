@@ -61,6 +61,7 @@ public class ScoreKeeper : MonoBehaviour
             }
 
         }
+
     }
 
     private void RearrangeOrder()
@@ -116,7 +117,7 @@ public class ScoreKeeper : MonoBehaviour
         return scoreList[position].playerScore;
     }
 
-    private string GetNameOnPosition(int position)
+    public string GetNameOnPosition(int position)
     {
         return scoreList[position].playerName;
     }
