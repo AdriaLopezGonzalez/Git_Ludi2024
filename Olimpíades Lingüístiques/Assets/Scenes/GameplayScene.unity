@@ -471,6 +471,50 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &114771878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114771880}
+  - component: {fileID: 114771879}
+  m_Layer: 0
+  m_Name: ScoreKeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114771879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114771878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e04c1b6f0f8f9441b4c53d4ce336dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &114771880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114771878}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -69.4284, y: -9.803295, z: 14.935426}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128194550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,8 +4137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2927e1a791adc4d9668a3d0149835f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyQuestionsData: {fileID: 4900000, guid: 0deb39c164fc97c448efa79295b54b92, type: 3}
-  hardQuestionsData: {fileID: 4900000, guid: d912426bb12117c4d8ace403a0eecdb6, type: 3}
+  easyQuestionsData: {fileID: 4900000, guid: 9dd1dc3537b67d541af98098c8afd4a3, type: 3}
+  hardQuestionsData: {fileID: 4900000, guid: 78b8908b2bad55041a3e79c2472dedec, type: 3}
   twoButtons_Obj: {fileID: 760407417}
   threeButtons_Obj: {fileID: 1011173450}
   leftButton_EasyWords: {fileID: 1218309784}
@@ -4129,3 +4173,4 @@ SceneRoots:
   - {fileID: 1895607376}
   - {fileID: 1546428263}
   - {fileID: 946282497}
+  - {fileID: 114771880}
