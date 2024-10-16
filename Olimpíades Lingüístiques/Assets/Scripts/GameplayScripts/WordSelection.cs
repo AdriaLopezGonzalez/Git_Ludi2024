@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class WordSelection : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class WordSelection : MonoBehaviour
     int points;
     [SerializeField]
     int pointIncrease;
+
+    public int currentQuestionNum = 0;
     [SerializeField]
-    int pointsToChangeDiff;
+    Slider raceSlider;
 
     bool changeToHard = false;
 
@@ -56,6 +59,8 @@ public class WordSelection : MonoBehaviour
         points = 0;
         pointsText.text = points.ToString() + " Punts";
         buttonsAnimator = GetComponent<Animation>();
+        raceSlider.maxValue= wordsStorageScript.GetMaxQuestions();
+        SetRaceSlider();
     }
 
     void Update()
@@ -99,11 +104,7 @@ public class WordSelection : MonoBehaviour
             else
                 timeSlider.value += timeIncrease_WordAnswered;
 
-            if ((points >= pointsToChangeDiff) && !changeToHard)
-            {
 
-                changeToHard = true;
-            }
 
             PlayButtonsAnimation(true);
             //sube tiempo, puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
@@ -124,6 +125,21 @@ public class WordSelection : MonoBehaviour
             PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
+
+        currentQuestionNum++;
+        if (currentQuestionNum > wordsStorageScript.GetMaxQuestions())
+        {
+            //SE ACABA LA PARTIDA, hemos llegado meta
+            // ponemos pa poner nombre a puntuacion y paramos preguntas
+            // maybe tmbien poner animacion de final supongo
+        }
+        SetRaceSlider();
+        changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+    }
+
+    private void SetRaceSlider()
+    {
+        raceSlider.value = currentQuestionNum;
     }
 
     void PlayButtonsAnimation(bool correctAnswer)

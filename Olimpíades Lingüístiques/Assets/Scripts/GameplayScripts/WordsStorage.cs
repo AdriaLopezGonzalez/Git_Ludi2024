@@ -1,9 +1,8 @@
-using System.Collections;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class WordsStorage : MonoBehaviour
 {
@@ -21,10 +20,14 @@ public class WordsStorage : MonoBehaviour
     string[,] easyQuestions;
     string[,] hardQuestions;
 
+    [Header("Carrera")]
     int easyQuestionsCounter = 0;
     int hardQuestionsCounter = 0;
     [SerializeField]
-    int maxCounterValue = 5;
+    int easyQuestionsNumber = 5;
+    [SerializeField]
+    int hardQuestionsNumber = 5;
+    public bool[] isRaceQuestionEasy;
 
     List<int> usedEasyRows = new List<int>();
     List<int> usedHardRows = new List<int>();
@@ -79,7 +82,9 @@ public class WordsStorage : MonoBehaviour
     {
         SetEasyQuestions();
         SetHardQuestions();
+        SetRaceQuestionsType();
         EasyRandomWordSelector();
+
     }
 
     private void SetHardQuestions()
@@ -101,13 +106,13 @@ public class WordsStorage : MonoBehaviour
 
     private void SetEasyQuestions()
     {
-        
+
         string[] data = easyQuestionsData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
 
         easyQuestions = new string[data.Length / 2, 2];
         int i = 0;
 
-        for (int row = 0; row < data.Length/2; row++)
+        for (int row = 0; row < data.Length / 2; row++)
         {
             for (int col = 0; col < 2; col++)
             {
@@ -117,24 +122,55 @@ public class WordsStorage : MonoBehaviour
         }
     }
 
-    public bool EasyQuestionPlaced()
+    public void SetRaceQuestionsType()
     {
-        if(easyQuestionsCounter >= maxCounterValue)
+        isRaceQuestionEasy = new bool[(easyQuestionsNumber + hardQuestionsNumber)];
+
+        for (int i = 0; i < isRaceQuestionEasy.Length; i++)
+        {
+            if (i == 0)
+            {
+                easyQuestionsCounter++;
+                isRaceQuestionEasy[i] = true;
+            }
+            else if (i == 9)
+            {
+                hardQuestionsCounter++;
+                isRaceQuestionEasy[i] = false;
+            }
+            else
+            {
+                if ((UnityEngine.Random.Range(0, 2) == 0) || hardQuestionsCounter == 4)
+                {
+                    easyQuestionsCounter++;
+                    isRaceQuestionEasy[i] = true;
+                }
+                else
+                {
+                    hardQuestionsCounter++;
+                    isRaceQuestionEasy[i] = false;
+                }
+            }
+        }
+    }
+
+    /*public bool EasyQuestionPlaced()
+    {
+        if (easyQuestionsCounter >= maxCounterValue)
             return false;
-        else if(hardQuestionsCounter >= maxCounterValue)
+        else if (hardQuestionsCounter >= maxCounterValue)
             return true;
         else
         {
-            if(UnityEngine.Random.Range(0, 2) == 0)
+            if (UnityEngine.Random.Range(0, 2) == 0)
                 return true;
             else
                 return false;
         }
-    }
+    }*/
 
     private void EasyRandomWordSelector()
     {
-        easyQuestionsCounter++;
 
         int randomQuestionRow = UnityEngine.Random.Range(0, easyQuestions.GetLength(0));
         while (usedEasyRows.Contains(randomQuestionRow))
@@ -165,7 +201,6 @@ public class WordsStorage : MonoBehaviour
 
     private void HardRandomWordSelector()
     {
-        hardQuestionsCounter++;
 
         int randomQuestionRow = UnityEngine.Random.Range(0, hardQuestions.GetLength(0));
         while (usedHardRows.Contains(randomQuestionRow))
@@ -231,6 +266,8 @@ public class WordsStorage : MonoBehaviour
 
     public void animationEasyEnded()
     {
+        CheckActiveButtons();
+
         enableButtons();
 
         EasyRandomWordSelector();
@@ -240,13 +277,31 @@ public class WordsStorage : MonoBehaviour
 
     public void animationHardEnded()
     {
-        twoButtons_Obj.SetActive(false);
-        threeButtons_Obj.SetActive(true);
+        CheckActiveButtons();
 
         enableButtons();
 
         HardRandomWordSelector();
 
         GetComponent<WordSelection>().ResumeTime();
+    }
+    
+    public void CheckActiveButtons()
+    {
+        if (isRaceQuestionEasy[GetComponent<WordSelection>().currentQuestionNum])
+        {
+            twoButtons_Obj.SetActive(true);
+            threeButtons_Obj.SetActive(false);
+        }
+        else
+        {
+            twoButtons_Obj.SetActive(false);
+            threeButtons_Obj.SetActive(true);
+        }
+    }
+
+    public int GetMaxQuestions()
+    {
+        return hardQuestionsNumber + easyQuestionsNumber;
     }
 }
