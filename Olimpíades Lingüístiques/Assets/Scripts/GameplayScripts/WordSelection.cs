@@ -1,35 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class WordSelection : MonoBehaviour
 {
     [SerializeField]
     TMP_Text pointsText;
+    [SerializeField]
+    TMP_Text baseMultiplierText;
     int points;
     [SerializeField]
-    int pointIncrease;
+    int easyPointIncrease;
+    [SerializeField]
+    int hardPointIncrease;
 
     public int currentQuestionNum = 0;
     [SerializeField]
     Slider raceSlider;
 
     bool changeToHard = false;
+    bool raceQuestionsEnded = false;
 
-    float pointsMultiplier = 1;
+    float baseMultiplier = 1;
     int correctWordsStreak = 0;
 
     [SerializeField]
     Slider timeSlider;
     [SerializeField]
     float timeSubtract;
-    [SerializeField]
-    float timeIncrease_WordAnswered;
-    [SerializeField]
-    float timeSubstract_WordMissed;
+
 
     bool timeStop;
 
@@ -46,9 +45,14 @@ public class WordSelection : MonoBehaviour
     AnimationClip wrongAnswerHardAnimation;
 
 
-    public void ResumeTime()
+    public void StartTimer()
     {
+        timeSlider.value = timeSlider.maxValue;
         timeStop = false;
+    }
+    private void StopTimer()
+    {
+        timeStop = true;
     }
 
     void Start()
@@ -58,32 +62,41 @@ public class WordSelection : MonoBehaviour
         timeSlider.enabled = false;
         points = 0;
         pointsText.text = points.ToString() + " Punts";
+        baseMultiplierText.text = "X" + baseMultiplier.ToString();
         buttonsAnimator = GetComponent<Animation>();
-        raceSlider.maxValue= wordsStorageScript.GetMaxQuestions();
+        raceSlider.maxValue = wordsStorageScript.GetMaxQuestions();
         SetRaceSlider();
     }
 
     void Update()
     {
+
         if (!timeStop)
         {
-            if(timeSlider.value <= timeSlider.minValue)
+            if (timeSlider.value <= timeSlider.minValue)
             {
-                wordsStorageScript.disableButtons();
-
-                //enseñar pantalla que te diga si quieres reiniciar partida o salir al menu
+                QuestionTimeOver();
             }
             else
             {
                 timeSlider.value -= timeSubtract * Time.deltaTime;
             }
         }
+
     }
 
     public void WordSelected(int buttonPressed)
     {
-        timeStop = true;
+        StopTimer();
         wordsStorageScript.disableButtons();
+
+        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length - 1)
+        {
+            currentQuestionNum++;
+            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+        }
+        else
+            raceQuestionsEnded = true;
 
         if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
@@ -91,55 +104,83 @@ public class WordSelection : MonoBehaviour
 
             correctWordsStreak++;
             if (correctWordsStreak == 3)
-                pointsMultiplier = 1.5f;
-            else if (correctWordsStreak == 6)
-                pointsMultiplier = 2;
+                baseMultiplier = 2f;
+            else if (correctWordsStreak == 5)
+                baseMultiplier = 3;
 
-            points = (int)(points + pointIncrease * pointsMultiplier);
+            baseMultiplierText.text = "X" + baseMultiplier.ToString(); // mirar si lo queremos antes de sumar puntos o despues
+
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                points = (int)(points + easyPointIncrease * baseMultiplier);
+            else
+                points = (int)(points + hardPointIncrease * baseMultiplier);
             pointsText.text = points.ToString() + " Punts";
 
 
-            if ((timeSlider.value += timeIncrease_WordAnswered) > timeSlider.maxValue)
-                timeSlider.value = timeSlider.maxValue;
+            if (raceQuestionsEnded)
+                EndRace();
             else
-                timeSlider.value += timeIncrease_WordAnswered;
-
-
-
-            PlayButtonsAnimation(true);
-            //sube tiempo, puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
-            // si has superado x puntos o x palabras acertadas, pasar a dificiles
+                PlayButtonsAnimation(true);
+            //sube puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
         }
         else
         {
             Debug.Log("has perdio");
 
             correctWordsStreak = 0;
-            pointsMultiplier = 1;
+            baseMultiplier = 1;
 
-            if ((timeSlider.value -= timeSubstract_WordMissed) < timeSlider.minValue)
-                timeSlider.value = timeSlider.minValue;
+            if (raceQuestionsEnded)
+                EndRace();
             else
-                timeSlider.value -= timeSubstract_WordMissed;
-
-            PlayButtonsAnimation(false);
+                PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
 
-        currentQuestionNum++;
-        if (currentQuestionNum > wordsStorageScript.GetMaxQuestions())
-        {
-            //SE ACABA LA PARTIDA, hemos llegado meta
-            // ponemos pa poner nombre a puntuacion y paramos preguntas
-            // maybe tmbien poner animacion de final supongo
-        }
+
         SetRaceSlider();
-        changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+
+    }
+
+    private void QuestionTimeOver()
+    {
+        StopTimer();
+        wordsStorageScript.disableButtons();
+
+        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length - 1)
+        {
+            currentQuestionNum++;
+            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+        }
+        else
+            raceQuestionsEnded = true;
+
+        Debug.Log("has perdio");
+
+        correctWordsStreak = 0;
+        baseMultiplier = 1;
+
+        if (raceQuestionsEnded)
+            EndRace();
+        else
+            PlayButtonsAnimation(false);
+
+        SetRaceSlider();
+    }
+
+    private void EndRace()
+    {
+        //SE ACABA LA PARTIDA, hemos llegado meta
+        // animacion de llegar a meta y paramos preguntas
+        // despues ponemos pa poner nombre a puntuacion
     }
 
     private void SetRaceSlider()
     {
-        raceSlider.value = currentQuestionNum;
+        if (raceQuestionsEnded)
+            raceSlider.value = raceSlider.maxValue;
+        else
+            raceSlider.value = currentQuestionNum;
     }
 
     void PlayButtonsAnimation(bool correctAnswer)
