@@ -351,7 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33177e375070651409d9ecf396da63d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeIncrease: 1
+  button: {fileID: 1395361749270363141}
+  timeIncrease: 25
   greatMultiplierMin: 12
   greatMultiplierMax: 20
   normalMultiplierMin: 57

@@ -7,6 +7,7 @@ public class AciertoExtra : MonoBehaviour
 {
     Slider slider;
     WordSelection wordSelection;
+    [SerializeField] Button button;
 
     public float timeIncrease;
     public int greatMultiplierMin;
@@ -24,6 +25,7 @@ public class AciertoExtra : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // LA PRIMERA VEZ NO SALE???
         slider = GetComponent<Slider>();
         wordSelection = GameObject.Find("Canvas").GetComponent<WordSelection>();
     }
@@ -33,7 +35,7 @@ public class AciertoExtra : MonoBehaviour
     {
         //darle al tiempo y llega al max value acabar sin na
         if(ongoing)
-            slider.value = timeIncrease * Time.deltaTime;
+            slider.value += timeIncrease * Time.deltaTime;
 
         if (slider.value >= slider.maxValue)
             GoBack(0);
@@ -45,11 +47,13 @@ public class AciertoExtra : MonoBehaviour
     {
         pointsEarnedLastRound = pointsEarned;
         ongoing = true;
+        button.gameObject.SetActive(true);
     }
 
     public void OnClick()
     {
-        if(slider.value >greatMultiplierMin && slider.value < greatMultiplierMax)
+        button.gameObject.SetActive(false);
+        if (slider.value >greatMultiplierMin && slider.value < greatMultiplierMax)
         {
             //sumar multipliers
             GoBack((pointsEarnedLastRound * greatMultiplierMult) - pointsEarnedLastRound);
