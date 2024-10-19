@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AciertoExtra : MonoBehaviour
 {
     Slider slider;
+    WordSelection wordSelection;
 
     public float timeIncrease;
     public int greatMultiplierMin;
@@ -18,10 +19,13 @@ public class AciertoExtra : MonoBehaviour
 
     bool ongoing = false;
 
+    int pointsEarnedLastRound;
+
     // Start is called before the first frame update
     void Start()
     {
         slider = GetComponent<Slider>();
+        wordSelection = GameObject.Find("Canvas").GetComponent<WordSelection>();
     }
 
     // Update is called once per frame
@@ -32,13 +36,14 @@ public class AciertoExtra : MonoBehaviour
             slider.value = timeIncrease * Time.deltaTime;
 
         if (slider.value >= slider.maxValue)
-            GoBack();
+            GoBack(0);
 
 
     }
 
-    public void AciertoAchieved()
+    public void AciertoAchieved(int pointsEarned)
     {
+        pointsEarnedLastRound = pointsEarned;
         ongoing = true;
     }
 
@@ -47,23 +52,30 @@ public class AciertoExtra : MonoBehaviour
         if(slider.value >greatMultiplierMin && slider.value < greatMultiplierMax)
         {
             //sumar multipliers
-            GoBack();
+            GoBack((pointsEarnedLastRound * greatMultiplierMult) - pointsEarnedLastRound);
         }
         else if (slider.value > normalMultiplierMin && slider.value < normalMultiplierMax)
         {
             //sumar multipliers
-            GoBack();
+            GoBack((pointsEarnedLastRound*normalMultiplierMult)-pointsEarnedLastRound);
         }
         else
         {
-            GoBack();
+            GoBack(0);
         }
 
     }
 
-    private void GoBack()
+    private void GoBack(int newPoints)
     {
-        // volver a words selection con o sin puntos
+
+        wordSelection.AddPoints(newPoints);
+
+        ongoing = false;
+        slider.value = slider.minValue;
+
+        slider.gameObject.SetActive(false);
+
     }
 
 }
