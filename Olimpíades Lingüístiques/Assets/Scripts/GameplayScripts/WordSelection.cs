@@ -18,6 +18,10 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     Slider raceSlider;
 
+    [SerializeField]
+    AciertoExtra minijuegoAcierto;
+    int minijuegoMultiplier;
+
     bool changeToHard = false;
     bool raceQuestionsEnded = false;
 
@@ -110,12 +114,18 @@ public class WordSelection : MonoBehaviour
 
             baseMultiplierText.text = "X" + baseMultiplier.ToString(); // mirar si lo queremos antes de sumar puntos o despues
 
+            int pointsEarned;
+
             if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                points = (int)(points + easyPointIncrease * baseMultiplier);
+                pointsEarned = (int)(points + easyPointIncrease * baseMultiplier);
             else
-                points = (int)(points + hardPointIncrease * baseMultiplier);
+                pointsEarned = (int)(points + hardPointIncrease * baseMultiplier);
+
+            points += pointsEarned;
             pointsText.text = points.ToString() + " Punts";
 
+            minijuegoAcierto.gameObject.SetActive(true);
+            minijuegoAcierto.AciertoAchieved(pointsEarned);
 
             if (raceQuestionsEnded)
                 EndRace();
@@ -205,5 +215,12 @@ public class WordSelection : MonoBehaviour
     public int GetPoints()
     {
         return points;
+    }
+
+    public void AddPoints(int newPoints)
+    {
+        points += newPoints;
+
+        pointsText.text = points.ToString() + " Punts";
     }
 }
