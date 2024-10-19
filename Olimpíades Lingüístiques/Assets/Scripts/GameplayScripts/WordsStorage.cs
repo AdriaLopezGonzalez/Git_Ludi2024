@@ -273,6 +273,8 @@ public class WordsStorage : MonoBehaviour
         EasyRandomWordSelector();
 
         GetComponent<WordSelection>().StartTimer();
+
+        GetComponent<RandomWordMinigame>().WillActivateRandomWord();
     }
 
     public void animationHardEnded()
@@ -284,6 +286,8 @@ public class WordsStorage : MonoBehaviour
         HardRandomWordSelector();
 
         GetComponent<WordSelection>().StartTimer();
+
+        GetComponent<RandomWordMinigame>().WillActivateRandomWord();
     }
     
     public void CheckActiveButtons()
