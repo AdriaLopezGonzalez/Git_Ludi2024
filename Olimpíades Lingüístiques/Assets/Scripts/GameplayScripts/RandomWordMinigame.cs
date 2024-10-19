@@ -14,12 +14,15 @@ public class RandomWordMinigame : MonoBehaviour
     List<int> usedRandomWordsRows = new List<int>();
 
     [SerializeField]
-    BoxCollider2D buttonPlacedZone;
+    BoxCollider2D buttonPlacingZoneCollider;
     [SerializeField]
-    Button randomWordsButton;
+    GameObject randomWordsButton;
+    BoxCollider2D buttonCollider;
+
+    bool wordIsCorrect;
     
     [SerializeField]
-    int wordPressedMultiplyer = 1;
+    int addedMultiplyer = 1;
 
     bool minigameEnabled = false;
 
@@ -27,9 +30,17 @@ public class RandomWordMinigame : MonoBehaviour
     [SerializeField]
     float timeToSelect = 3.0f;
 
+    public void WillActivateRandomWord()
+    {
+        if (UnityEngine.Random.Range(0, 2) == 0)
+            ActivateRandomWord();
+    }
+
     void Start()
     {
-        
+        buttonCollider = randomWordsButton.GetComponent<BoxCollider2D>();
+
+        SetRandomWords();
     }
 
     void Update()
@@ -38,7 +49,7 @@ public class RandomWordMinigame : MonoBehaviour
         {
             if (randomWordTimer >= timeToSelect)
             {
-                RandomWordTimeOver();
+                CloseRandomWord();
             }
             else
             {
@@ -47,19 +58,91 @@ public class RandomWordMinigame : MonoBehaviour
         }
     }
 
-    void RandomWordTimeOver()
+    private void SetRandomWords()
     {
 
-    }
+        string[] data = randomWordsData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
 
-    public void WillActivateRandomWord()
-    {
-        if (UnityEngine.Random.Range(0, 2) == 0)
-            ActivateRandomWord();
+        randomWords = new string[data.Length / 2, 2];
+        int i = 0;
+
+        for (int row = 0; row < data.Length / 2; row++)
+        {
+            for (int col = 0; col < 2; col++)
+            {
+                randomWords[row, col] = data[i];
+                i++;
+            }
+        }
     }
 
     void ActivateRandomWord()
     {
+        RandomWordSelector();
 
+        PlaceTheButton();
+
+        minigameEnabled = true;
+    }
+
+    void RandomWordSelector()
+    {
+        int randomWordRow = UnityEngine.Random.Range(0, randomWords.GetLength(0));
+        while (usedRandomWordsRows.Contains(randomWordRow))
+        {
+            randomWordRow = UnityEngine.Random.Range(0, randomWords.GetLength(0));
+        }
+        usedRandomWordsRows.Add(randomWordRow);
+
+        if (usedRandomWordsRows.Count >= randomWords.GetLength(0))
+            usedRandomWordsRows.Clear();
+
+        if (UnityEngine.Random.Range(0, 2) == 0)
+        {
+            randomWordsButton.GetComponentInChildren<TMP_Text>().text = randomWords[randomWordRow, 0];
+
+            wordIsCorrect = true;
+        }
+        else
+        {
+            randomWordsButton.GetComponentInChildren<TMP_Text>().text = randomWords[randomWordRow, 1];
+
+            wordIsCorrect = false;
+        }
+    }
+
+    void PlaceTheButton()
+    {
+        var buttonAxis = buttonPlacingZoneCollider.bounds;
+        float buttonXPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.x/2), buttonAxis.max.x-(buttonCollider.bounds.max.x/2));
+        float buttonYPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.y/2), buttonAxis.max.y-(buttonCollider.bounds.max.y/2));
+
+        randomWordsButton.transform.position = new Vector2(buttonXPosition, buttonYPosition);
+
+        randomWordsButton.SetActive(true);
+    }
+
+    public void ButtonPressed()
+    {
+        if (wordIsCorrect)
+        {
+            //GetComponent<WordSelection>().baseMultiplyer += addedMultiplyer;
+            //hacer alguna animacion de chuli acertao
+        }
+        else
+        {
+            //GetComponent<WordSelection>().baseMultiplyer = 1;
+            //hacer alguna animacion de NO chuli fallao
+        }
+
+        CloseRandomWord();
+    }
+
+    void CloseRandomWord()
+    {
+        randomWordsButton.SetActive(false);
+
+        minigameEnabled = false;
+        randomWordTimer = 0;
     }
 }
