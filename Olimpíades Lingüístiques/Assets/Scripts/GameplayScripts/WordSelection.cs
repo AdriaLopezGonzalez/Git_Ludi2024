@@ -25,7 +25,7 @@ public class WordSelection : MonoBehaviour
     bool changeToHard = false;
     bool raceQuestionsEnded = false;
 
-    float baseMultiplier = 1;
+    public float baseMultiplier = 1;
     int correctWordsStreak = 0;
 
     [SerializeField]

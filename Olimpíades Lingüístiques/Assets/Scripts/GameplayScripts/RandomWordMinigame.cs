@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class RandomWordMinigame : MonoBehaviour
     public void WillActivateRandomWord()
     {
         if (UnityEngine.Random.Range(0, 2) == 0)
-            ActivateRandomWord();
+            StartCoroutine(WaitUntilActivate());
     }
 
     void Start()
@@ -56,6 +57,13 @@ public class RandomWordMinigame : MonoBehaviour
                 randomWordTimer += 1.0f * Time.deltaTime;
             }
         }
+    }
+
+    private IEnumerator WaitUntilActivate()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        ActivateRandomWord();
     }
 
     private void SetRandomWords()
@@ -114,8 +122,8 @@ public class RandomWordMinigame : MonoBehaviour
     void PlaceTheButton()
     {
         var buttonAxis = buttonPlacingZoneCollider.bounds;
-        float buttonXPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.x/2), buttonAxis.max.x-(buttonCollider.bounds.max.x/2));
-        float buttonYPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.y/2), buttonAxis.max.y-(buttonCollider.bounds.max.y/2));
+        float buttonXPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.x/2)+100, buttonAxis.max.x-(buttonCollider.bounds.max.x/2)-100);
+        float buttonYPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.y/2)+100, buttonAxis.max.y-(buttonCollider.bounds.max.y/2)-100);
 
         randomWordsButton.transform.position = new Vector2(buttonXPosition, buttonYPosition);
 
@@ -126,12 +134,12 @@ public class RandomWordMinigame : MonoBehaviour
     {
         if (wordIsCorrect)
         {
-            //GetComponent<WordSelection>().baseMultiplyer += addedMultiplyer;
+            GetComponent<WordSelection>().baseMultiplier += addedMultiplyer;
             //hacer alguna animacion de chuli acertao
         }
         else
         {
-            //GetComponent<WordSelection>().baseMultiplyer = 1;
+            GetComponent<WordSelection>().baseMultiplier = 1;
             //hacer alguna animacion de NO chuli fallao
         }
 
