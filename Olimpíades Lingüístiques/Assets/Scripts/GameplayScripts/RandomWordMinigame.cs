@@ -15,6 +15,7 @@ public class RandomWordMinigame : MonoBehaviour
     List<int> usedRandomWordsRows = new List<int>();
 
     [SerializeField]
+    GameObject buttonPlacingZone;
     BoxCollider2D buttonPlacingZoneCollider;
     [SerializeField]
     GameObject randomWordsButton;
@@ -40,7 +41,7 @@ public class RandomWordMinigame : MonoBehaviour
     void Start()
     {
         buttonCollider = randomWordsButton.GetComponent<BoxCollider2D>();
-
+        buttonPlacingZoneCollider = buttonPlacingZone.GetComponent<BoxCollider2D>();
         SetRandomWords();
     }
 
@@ -61,7 +62,7 @@ public class RandomWordMinigame : MonoBehaviour
 
     private IEnumerator WaitUntilActivate()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
 
         ActivateRandomWord();
     }
@@ -122,8 +123,8 @@ public class RandomWordMinigame : MonoBehaviour
     void PlaceTheButton()
     {
         var buttonAxis = buttonPlacingZoneCollider.bounds;
-        float buttonXPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.x/2)+100, buttonAxis.max.x-(buttonCollider.bounds.max.x/2)-100);
-        float buttonYPosition = UnityEngine.Random.Range(buttonAxis.min.x+(buttonCollider.bounds.max.y/2)+100, buttonAxis.max.y-(buttonCollider.bounds.max.y/2)-100);
+        float buttonXPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.x - (buttonAxis.max.x/2 + (buttonCollider.bounds.max.x/2)), buttonPlacingZone.transform.position.x + (buttonAxis.max.x/2 - (buttonCollider.bounds.max.x/2)));
+        float buttonYPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
 
         randomWordsButton.transform.position = new Vector2(buttonXPosition, buttonYPosition);
 

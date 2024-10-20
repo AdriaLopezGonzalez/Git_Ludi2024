@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -266,6 +267,13 @@ public class WordsStorage : MonoBehaviour
 
     public void animationEasyEnded()
     {
+        StartCoroutine(WaitEasyEnded());
+    }
+
+    private IEnumerator WaitEasyEnded()
+    {
+        yield return new WaitForSeconds(4.0f);
+
         CheckActiveButtons();
 
         enableButtons();
@@ -273,12 +281,17 @@ public class WordsStorage : MonoBehaviour
         EasyRandomWordSelector();
 
         GetComponent<WordSelection>().StartTimer();
-
-        GetComponent<RandomWordMinigame>().WillActivateRandomWord();
     }
 
     public void animationHardEnded()
     {
+        StartCoroutine(WaitHardEnded());
+    }
+
+    private IEnumerator WaitHardEnded()
+    {
+        yield return new WaitForSeconds(4.0f);
+
         CheckActiveButtons();
 
         enableButtons();
@@ -286,10 +299,8 @@ public class WordsStorage : MonoBehaviour
         HardRandomWordSelector();
 
         GetComponent<WordSelection>().StartTimer();
-
-        GetComponent<RandomWordMinigame>().WillActivateRandomWord();
     }
-    
+
     public void CheckActiveButtons()
     {
         if (isRaceQuestionEasy[GetComponent<WordSelection>().currentQuestionNum])

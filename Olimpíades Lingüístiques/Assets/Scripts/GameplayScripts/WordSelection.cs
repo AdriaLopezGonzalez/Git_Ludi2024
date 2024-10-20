@@ -140,6 +140,8 @@ public class WordSelection : MonoBehaviour
             correctWordsStreak = 0;
             baseMultiplier = 1;
 
+            GetComponent<RandomWordMinigame>().WillActivateRandomWord();
+
             if (raceQuestionsEnded)
                 EndRace();
             else
