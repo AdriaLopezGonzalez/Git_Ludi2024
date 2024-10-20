@@ -9,7 +9,8 @@ public class ScoreKeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*EnterNewScore("GTS", 50);
+        /*
+        EnterNewScore("GTS", 50);
         EnterNewScore("TET", 550);
         EnterNewScore("PTO", 100);
         EnterNewScore("FIT", 120);
@@ -112,13 +113,19 @@ public class ScoreKeeper : MonoBehaviour
 
     }
 
-    public int GetScoreOnPosition(int position)
+    public string GetScoreOnPosition(int position)
     {
-        return scoreList[position].playerScore;
+        if (!ReferenceEquals(scoreList[position-1], null))
+            return scoreList[position-1].playerScore.ToString();
+        else
+            return string.Empty;
     }
 
     public string GetNameOnPosition(int position)
     {
-        return scoreList[position].playerName;
+        if (!ReferenceEquals(scoreList[position-1], null))
+            return scoreList[position-1].playerName;
+        else
+            return string.Empty;
     }
 }
