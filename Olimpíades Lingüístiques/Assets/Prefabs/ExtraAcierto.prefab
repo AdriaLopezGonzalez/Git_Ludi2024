@@ -335,7 +335,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 85
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -352,11 +352,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1395361749270363141}
-  timeIncrease: 25
-  greatMultiplierMin: 12
-  greatMultiplierMax: 20
-  normalMultiplierMin: 57
-  normalMultiplierMax: 78
+  timeIncrease: 45
+  greatMultiplierMin: 21
+  greatMultiplierMax: 30
+  normalMultiplierMin: 65
+  normalMultiplierMax: 85
   greatMultiplierMult: 4
   normalMultiplierMult: 2
 --- !u!1 &5102417918020775567
@@ -393,7 +393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.5, y: 0}
+  m_AnchoredPosition: {x: 34.9, y: 0}
   m_SizeDelta: {x: 30, y: 7.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1022804706923314985
@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48, y: 0}
+  m_AnchoredPosition: {x: -35.2, y: 0}
   m_SizeDelta: {x: 12, y: 7.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6919356260066753438
@@ -648,8 +648,8 @@ RectTransform:
   m_GameObject: {fileID: 8103627846857900297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7.35, y: 7.35, z: 7.35}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 879765402033669423}
   m_Father: {fileID: 4201350320708130277}

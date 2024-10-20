@@ -117,9 +117,9 @@ public class WordSelection : MonoBehaviour
             int pointsEarned;
 
             if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                pointsEarned = (int)(points + easyPointIncrease * baseMultiplier);
+                pointsEarned = (int)(easyPointIncrease * baseMultiplier);
             else
-                pointsEarned = (int)(points + hardPointIncrease * baseMultiplier);
+                pointsEarned = (int)(hardPointIncrease * baseMultiplier);
 
             points += pointsEarned;
             pointsText.text = points.ToString() + " Punts";

@@ -28,6 +28,8 @@ public class AciertoExtra : MonoBehaviour
         // LA PRIMERA VEZ NO SALE???
         slider = GetComponent<Slider>();
         wordSelection = GameObject.Find("Canvas").GetComponent<WordSelection>();
+        slider.value = slider.minValue;
+        slider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
