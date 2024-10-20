@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fuego_frames_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 240
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f125484d2ba1c419c2f9ea17051f79
+      internalID: 1330938616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuego_frames_1
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 0
+        width: 260
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2841e2dddbb6534b8fdc2654acada7d
+      internalID: 973519719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuego_frames_5
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 0
+        width: 261
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5833d32f43b0246b6cc7d8f67e83b3
+      internalID: -2035244953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuego_frames_6
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 0
+        width: 272
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43162cb8cb8e81c4a8f2fe1bf1ff54bd
+      internalID: -1033869803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuego_frames_7
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 1
+        width: 266
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecffe2c5c108cea419b15c48fe6891b7
+      internalID: 2025402168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +211,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fuego_frames_0: 1330938616
+      fuego_frames_1: 973519719
+      fuego_frames_2: 743213348
+      fuego_frames_3: -502370970
+      fuego_frames_4: -2109490237
+      fuego_frames_5: -2035244953
+      fuego_frames_6: -1033869803
+      fuego_frames_7: 2025402168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
