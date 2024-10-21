@@ -7,7 +7,6 @@ public class AciertoExtra : MonoBehaviour
 {
     Slider slider;
     WordSelection wordSelection;
-    [SerializeField] Button button;
 
     public float timeIncrease;
     public int greatMultiplierMin;
@@ -36,8 +35,12 @@ public class AciertoExtra : MonoBehaviour
     void Update()
     {
         //darle al tiempo y llega al max value acabar sin na
-        if(ongoing)
+        if (ongoing)
+        {
             slider.value += timeIncrease * Time.deltaTime;
+            if (Input.GetMouseButtonDown(0))
+                OnClick();
+        }
 
         if (slider.value >= slider.maxValue)
             GoBack(0);
@@ -49,12 +52,12 @@ public class AciertoExtra : MonoBehaviour
     {
         pointsEarnedLastRound = pointsEarned;
         ongoing = true;
-        button.gameObject.SetActive(true);
+
     }
 
     public void OnClick()
     {
-        button.gameObject.SetActive(false);
+
         if (slider.value >greatMultiplierMin && slider.value < greatMultiplierMax)
         {
             //sumar multipliers
