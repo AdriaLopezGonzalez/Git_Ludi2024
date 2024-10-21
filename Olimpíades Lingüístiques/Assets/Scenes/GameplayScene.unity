@@ -7487,7 +7487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomWordsData: {fileID: 4900000, guid: 949f215d646c6f241909ae7fd74b7fd5, type: 3}
-  buttonPlacingZone: {fileID: 0}
+  buttonPlacingZone: {fileID: 1421114779}
   randomWordsButton: {fileID: 515545423}
   addedMultiplyer: 1
   timeToSelect: 3

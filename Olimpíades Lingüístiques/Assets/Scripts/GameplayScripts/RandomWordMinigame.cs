@@ -124,7 +124,7 @@ public class RandomWordMinigame : MonoBehaviour
     {
         var buttonAxis = buttonPlacingZoneCollider.bounds;
         float buttonXPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.x - (buttonAxis.max.x/2 + (buttonCollider.bounds.max.x/2)), buttonPlacingZone.transform.position.x + (buttonAxis.max.x/2 - (buttonCollider.bounds.max.x/2)));
-        float buttonYPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
+        float buttonYPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.y - (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
 
         randomWordsButton.transform.position = new Vector2(buttonXPosition, buttonYPosition);
 
