@@ -15,11 +15,11 @@ public class RandomWordMinigame : MonoBehaviour
     List<int> usedRandomWordsRows = new List<int>();
 
     [SerializeField]
-    GameObject buttonPlacingZone;
-    BoxCollider2D buttonPlacingZoneCollider;
+    Transform firstPosition;
+    [SerializeField]
+    Transform secondPosition;
     [SerializeField]
     GameObject randomWordsButton;
-    BoxCollider2D buttonCollider;
 
     bool wordIsCorrect;
     
@@ -34,14 +34,12 @@ public class RandomWordMinigame : MonoBehaviour
 
     public void WillActivateRandomWord()
     {
-        if (UnityEngine.Random.Range(0, 1) == 0)
+        if (UnityEngine.Random.Range(0, 2) == 0)
             StartCoroutine(WaitUntilActivate());
     }
 
     void Start()
     {
-        buttonCollider = randomWordsButton.GetComponent<BoxCollider2D>();
-        buttonPlacingZoneCollider = buttonPlacingZone.GetComponent<BoxCollider2D>();
         SetRandomWords();
     }
 
@@ -122,17 +120,10 @@ public class RandomWordMinigame : MonoBehaviour
 
     void PlaceTheButton()
     {
-        var buttonAxis = buttonPlacingZoneCollider.bounds;
-
-        Vector3 worldPlacingPosition = (buttonPlacingZone.transform.position);
-
-        float buttonXPosition = UnityEngine.Random.Range(worldPlacingPosition.x - (buttonAxis.max.x/2 + (buttonCollider.bounds.max.x/2)), worldPlacingPosition.x + (buttonAxis.max.x/2 - (buttonCollider.bounds.max.x/2)));
-        float buttonYPosition = UnityEngine.Random.Range(worldPlacingPosition.y - (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), worldPlacingPosition.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
-        Debug.Log(buttonXPosition);
-        Debug.Log(buttonYPosition);
-
-        randomWordsButton.GetComponent<RectTransform>().position = (new Vector3(buttonXPosition, buttonYPosition));
-        Debug.Log(randomWordsButton.GetComponent<RectTransform>().position);
+        if(UnityEngine.Random.Range(0, 2) == 0)
+            randomWordsButton.transform.position = firstPosition.position;
+        else
+            randomWordsButton.transform.position = secondPosition.position;
 
         randomWordsButton.SetActive(true);
     }
