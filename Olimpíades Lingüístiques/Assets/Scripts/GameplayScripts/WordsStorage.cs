@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -84,7 +83,10 @@ public class WordsStorage : MonoBehaviour
         SetEasyQuestions();
         SetHardQuestions();
         SetRaceQuestionsType();
-        EasyRandomWordSelector();
+
+        twoButtons_Obj.SetActive(false);
+        threeButtons_Obj.SetActive(false);
+        //EasyRandomWordSelector();
 
     }
 
@@ -265,6 +267,7 @@ public class WordsStorage : MonoBehaviour
 
     }
 
+    /*
     public void animationEasyEnded()
     {
         StartCoroutine(WaitEasyEnded());
@@ -297,6 +300,23 @@ public class WordsStorage : MonoBehaviour
         enableButtons();
 
         HardRandomWordSelector();
+
+        GetComponent<WordSelection>().StartTimer();
+    }
+    */
+
+    public void NextQuestion()
+    {
+        CheckActiveButtons();
+
+        enableButtons();
+
+        if (isRaceQuestionEasy[GetComponent<WordSelection>().currentQuestionNum])
+            EasyRandomWordSelector();
+        else
+            HardRandomWordSelector();
+
+        //PARAR LAS ANIMACIONESSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
         GetComponent<WordSelection>().StartTimer();
     }

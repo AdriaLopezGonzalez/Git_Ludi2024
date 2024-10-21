@@ -45,7 +45,7 @@ public class WordSelection : MonoBehaviour
     float timeSubtract;
 
 
-    bool timeStop;
+    bool timeStop = true;
 
     WordsStorage wordsStorageScript;
 
