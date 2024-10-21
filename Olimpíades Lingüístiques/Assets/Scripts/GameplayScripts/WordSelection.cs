@@ -14,6 +14,17 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     int hardPointIncrease;
 
+    [Header("Player Movement")]
+    [SerializeField] GameObject mainCharacter;
+    [SerializeField] float whenLastPositionX;
+    [SerializeField] float whenMiddlePositionX;
+    [SerializeField] float whenFirstPositionX;
+    [SerializeField] float playerSpeed = 1;
+    float whereToGo;
+    int currentPosition;
+    bool playerMoving = false;
+
+    [Header("")]
     public int currentQuestionNum = 0;
     [SerializeField]
     Slider raceSlider;
@@ -70,6 +81,9 @@ public class WordSelection : MonoBehaviour
         buttonsAnimator = GetComponent<Animation>();
         raceSlider.maxValue = wordsStorageScript.GetMaxQuestions();
         SetRaceSlider();
+
+        mainCharacter.transform.localPosition = new Vector3(whenMiddlePositionX, mainCharacter.transform.localPosition.y, mainCharacter.transform.localPosition.z);
+        currentPosition = 2;
     }
 
     void Update()
@@ -85,6 +99,11 @@ public class WordSelection : MonoBehaviour
             {
                 timeSlider.value -= timeSubtract * Time.deltaTime;
             }
+        }
+
+        if (playerMoving)
+        {
+            MovePlayer();
         }
 
     }
@@ -127,6 +146,22 @@ public class WordSelection : MonoBehaviour
             minijuegoAcierto.gameObject.SetActive(true);
             minijuegoAcierto.AciertoAchieved(pointsEarned);
 
+            if (currentPosition > 1)
+            {
+                playerMoving = true;
+                if (currentPosition == 2)
+                {
+                    whereToGo = whenFirstPositionX;
+                    currentPosition = 1;
+                }
+                else
+                {
+                    whereToGo = whenMiddlePositionX;
+                    currentPosition = 2;
+                }
+            }
+
+
             if (raceQuestionsEnded)
                 EndRace();
             else
@@ -141,6 +176,21 @@ public class WordSelection : MonoBehaviour
             baseMultiplier = 1;
 
             GetComponent<RandomWordMinigame>().WillActivateRandomWord();
+
+            if (currentPosition < 3)
+            {
+                playerMoving = true;
+                if (currentPosition == 2)
+                {
+                    whereToGo = whenLastPositionX;
+                    currentPosition = 3;
+                }
+                else
+                {
+                    whereToGo = whenMiddlePositionX;
+                    currentPosition = 2;
+                }
+            }
 
             if (raceQuestionsEnded)
                 EndRace();
@@ -224,5 +274,15 @@ public class WordSelection : MonoBehaviour
         points += newPoints;
 
         pointsText.text = points.ToString() + " Punts";
+    }
+
+    private void MovePlayer()
+    {
+
+        float newX = Mathf.Lerp(mainCharacter.transform.localPosition.x, whereToGo, playerSpeed * Time.deltaTime);
+        mainCharacter.transform.localPosition = new Vector3(newX, mainCharacter.transform.localPosition.y, mainCharacter.transform.localPosition.z);
+        if (mainCharacter.transform.localPosition.x + 0.1 > whereToGo && mainCharacter.transform.localPosition.x - 0.1 < whereToGo)
+            playerMoving = false;
+
     }
 }
