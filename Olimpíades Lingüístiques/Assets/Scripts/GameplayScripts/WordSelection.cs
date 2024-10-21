@@ -36,7 +36,7 @@ public class WordSelection : MonoBehaviour
     bool changeToHard = false;
     bool raceQuestionsEnded = false;
 
-    public float baseMultiplier = 1;
+    float baseMultiplier = 1;
     int correctWordsStreak = 0;
 
     [SerializeField]
@@ -59,6 +59,15 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     AnimationClip wrongAnswerHardAnimation;
 
+    public void updateMultiplier(int addingValue, bool retunToBase)
+    {
+        if (!retunToBase)
+            baseMultiplier += addingValue;
+        else
+            baseMultiplier = 1;
+
+        baseMultiplierText.text = "X" + baseMultiplier.ToString();
+    }
 
     public void StartTimer()
     {

@@ -34,7 +34,7 @@ public class RandomWordMinigame : MonoBehaviour
 
     public void WillActivateRandomWord()
     {
-        if (UnityEngine.Random.Range(0, 2) == 0)
+        if (UnityEngine.Random.Range(0, 1) == 0)
             StartCoroutine(WaitUntilActivate());
     }
 
@@ -123,10 +123,16 @@ public class RandomWordMinigame : MonoBehaviour
     void PlaceTheButton()
     {
         var buttonAxis = buttonPlacingZoneCollider.bounds;
-        float buttonXPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.x - (buttonAxis.max.x/2 + (buttonCollider.bounds.max.x/2)), buttonPlacingZone.transform.position.x + (buttonAxis.max.x/2 - (buttonCollider.bounds.max.x/2)));
-        float buttonYPosition = UnityEngine.Random.Range(buttonPlacingZone.transform.position.y - (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), buttonPlacingZone.transform.position.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
 
-        randomWordsButton.transform.position = new Vector2(buttonXPosition, buttonYPosition);
+        Vector3 worldPlacingPosition = (buttonPlacingZone.transform.position);
+
+        float buttonXPosition = UnityEngine.Random.Range(worldPlacingPosition.x - (buttonAxis.max.x/2 + (buttonCollider.bounds.max.x/2)), worldPlacingPosition.x + (buttonAxis.max.x/2 - (buttonCollider.bounds.max.x/2)));
+        float buttonYPosition = UnityEngine.Random.Range(worldPlacingPosition.y - (buttonAxis.max.y/2 + (buttonCollider.bounds.max.y/2)), worldPlacingPosition.y + (buttonAxis.max.y/2 - (buttonCollider.bounds.max.y/2)));
+        Debug.Log(buttonXPosition);
+        Debug.Log(buttonYPosition);
+
+        randomWordsButton.GetComponent<RectTransform>().position = (new Vector3(buttonXPosition, buttonYPosition));
+        Debug.Log(randomWordsButton.GetComponent<RectTransform>().position);
 
         randomWordsButton.SetActive(true);
     }
@@ -135,12 +141,12 @@ public class RandomWordMinigame : MonoBehaviour
     {
         if (wordIsCorrect)
         {
-            GetComponent<WordSelection>().baseMultiplier += addedMultiplyer;
+            GetComponent<WordSelection>().updateMultiplier(addedMultiplyer, false);
             //hacer alguna animacion de chuli acertao
         }
         else
         {
-            GetComponent<WordSelection>().baseMultiplier = 1;
+            GetComponent<WordSelection>().updateMultiplier(0, true);
             //hacer alguna animacion de NO chuli fallao
         }
 
