@@ -316,6 +316,7 @@ public class WordsStorage : MonoBehaviour
         else
             HardRandomWordSelector();
 
+        StopAnimations();
         //PARAR LAS ANIMACIONESSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
         GetComponent<WordSelection>().StartTimer();
@@ -338,5 +339,24 @@ public class WordsStorage : MonoBehaviour
     public int GetMaxQuestions()
     {
         return hardQuestionsNumber + easyQuestionsNumber;
+    }
+
+    private void StopAnimations()
+    {
+        GameObject.Find("AllMap").GetComponent<Animator>().speed = 0;
+        GameObject.Find("Rovello").GetComponent<Animator>().speed = 0;
+        GameObject.Find("Calçot").GetComponent<Animator>().speed = 0;
+        GameObject.Find("CagaTio").GetComponent<Animator>().speed = 0;
+    }
+
+    public void ResumeAnimations(bool isGood)
+    {
+        GameObject.Find("AllMap").GetComponent<Animator>().speed = 1;
+        GameObject.Find("Rovello").GetComponent<Animator>().speed = 1;
+        GameObject.Find("Calçot").GetComponent<Animator>().speed = 1;
+        GameObject.Find("CagaTio").GetComponent<Animator>().speed = 1;
+
+        GameObject.Find("CagaTio").GetComponent<Animator>().SetBool("IsGood",isGood);
+        GameObject.Find("CagaTio").GetComponent<Animator>().SetTrigger("Jump");
     }
 }

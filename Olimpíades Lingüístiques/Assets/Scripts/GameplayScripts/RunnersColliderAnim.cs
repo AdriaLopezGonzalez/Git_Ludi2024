@@ -13,7 +13,8 @@ public class RunnersColliderAnim : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Fence")
+
+        if (other.gameObject.tag == "Fence")
         {
             animator.SetTrigger("Jump");
         }
