@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController = null;
 
+    public ScoreKeeper scoreKeeper;
+
     public static bool alreadyInitializated = false;
 
     public static GameController GetGameController()
