@@ -132,7 +132,6 @@ public class WordSelection : MonoBehaviour
 
         if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
-            Debug.Log("tt acertao");
 
             correctWordsStreak++;
             if (correctWordsStreak == 3)
@@ -170,6 +169,7 @@ public class WordSelection : MonoBehaviour
                 }
             }
 
+            wordsStorageScript.ResumeAnimations(true);
 
             if (raceQuestionsEnded)
                 EndRace();
@@ -179,7 +179,6 @@ public class WordSelection : MonoBehaviour
         }
         else
         {
-            Debug.Log("has perdio");
 
             correctWordsStreak = 0;
             baseMultiplier = 1;
@@ -200,6 +199,8 @@ public class WordSelection : MonoBehaviour
                     currentPosition = 2;
                 }
             }
+
+            wordsStorageScript.ResumeAnimations(false);
 
             if (raceQuestionsEnded)
                 EndRace();
@@ -230,6 +231,23 @@ public class WordSelection : MonoBehaviour
 
         correctWordsStreak = 0;
         baseMultiplier = 1;
+
+        if (currentPosition < 3)
+        {
+            playerMoving = true;
+            if (currentPosition == 2)
+            {
+                whereToGo = whenLastPositionX;
+                currentPosition = 3;
+            }
+            else
+            {
+                whereToGo = whenMiddlePositionX;
+                currentPosition = 2;
+            }
+        }
+
+        wordsStorageScript.ResumeAnimations(false);
 
         if (raceQuestionsEnded)
             EndRace();
