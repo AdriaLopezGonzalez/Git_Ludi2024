@@ -45,7 +45,7 @@ public class WordSelection : MonoBehaviour
     float timeSubtract;
 
 
-    bool timeStop = true;
+    bool timeStop;
 
     WordsStorage wordsStorageScript;
 
@@ -73,14 +73,18 @@ public class WordSelection : MonoBehaviour
     {
         timeSlider.value = timeSlider.maxValue;
         timeStop = false;
+        timeSlider.gameObject.transform.GetChild(2).GetChild(0).gameObject.SetActive(true);
     }
     private void StopTimer()
     {
         timeStop = true;
+        timeSlider.gameObject.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
     }
 
     void Start()
     {
+        StopTimer();
+
         wordsStorageScript = GetComponent<WordsStorage>();
         timeSlider.value = timeSlider.maxValue;
         timeSlider.enabled = false;
