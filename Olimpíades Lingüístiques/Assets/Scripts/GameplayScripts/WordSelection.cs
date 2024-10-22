@@ -154,23 +154,6 @@ public class WordSelection : MonoBehaviour
             minijuegoAcierto.gameObject.SetActive(true);
             minijuegoAcierto.AciertoAchieved(pointsEarned);
 
-            if (currentPosition > 1)
-            {
-                playerMoving = true;
-                if (currentPosition == 2)
-                {
-                    whereToGo = whenFirstPositionX;
-                    currentPosition = 1;
-                }
-                else
-                {
-                    whereToGo = whenMiddlePositionX;
-                    currentPosition = 2;
-                }
-            }
-
-            wordsStorageScript.ResumeAnimations(true);
-
             if (raceQuestionsEnded)
                 EndRace();
             else
@@ -183,7 +166,8 @@ public class WordSelection : MonoBehaviour
             correctWordsStreak = 0;
             baseMultiplier = 1;
 
-            GetComponent<RandomWordMinigame>().WillActivateRandomWord();
+            if(currentQuestionNum < 10)
+                GetComponent<RandomWordMinigame>().WillActivateRandomWord();
 
             if (currentPosition < 3)
             {
@@ -212,6 +196,24 @@ public class WordSelection : MonoBehaviour
 
         SetRaceSlider();
 
+    }
+
+    public void PlayerMoving()
+    {
+        if (currentPosition > 1)
+        {
+            playerMoving = true;
+            if (currentPosition == 2)
+            {
+                whereToGo = whenFirstPositionX;
+                currentPosition = 1;
+            }
+            else
+            {
+                whereToGo = whenMiddlePositionX;
+                currentPosition = 2;
+            }
+        }
     }
 
     private void QuestionTimeOver()
