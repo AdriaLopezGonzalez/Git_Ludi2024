@@ -278,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
+  m_sharedMaterial: {fileID: 7673551574280189638, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1197,7 +1197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &157331499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2930,8 +2930,8 @@ MonoBehaviour:
 
     URI'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
+  m_sharedMaterial: {fileID: 7673551574280189638, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6369,8 +6369,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Posa el teu nom:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
+  m_sharedMaterial: {fileID: 7673551574280189638, guid: 5a40b7572b9655a4da645f095048b055, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6730,8 +6730,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enviar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9073da499dc51f4b9ef09772e72dee6, type: 2}
+  m_sharedMaterial: {fileID: -7601076033392282725, guid: c9073da499dc51f4b9ef09772e72dee6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7129,8 +7129,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10000 Punts!!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 868b6d53bfe4a054684ee67f4a7867fe, type: 2}
+  m_sharedMaterial: {fileID: -6478614781487107379, guid: 868b6d53bfe4a054684ee67f4a7867fe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11557,6 +11557,7 @@ MonoBehaviour:
   playerSpeed: 0.8
   currentQuestionNum: 0
   raceSlider: {fileID: 320400330}
+  endingPopUp: {fileID: 157331498}
   minijuegoAcierto: {fileID: 1206075997}
   timeSlider: {fileID: 1606818420}
   timeSubtract: 23

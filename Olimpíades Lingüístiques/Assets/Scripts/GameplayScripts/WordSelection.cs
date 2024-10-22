@@ -31,6 +31,8 @@ public class WordSelection : MonoBehaviour
     [SerializeField]
     Slider raceSlider;
 
+    [SerializeField] GameObject endingPopUp;
+
     [SerializeField]
     AciertoExtra minijuegoAcierto;
     int minijuegoMultiplier;
@@ -161,8 +163,6 @@ public class WordSelection : MonoBehaviour
             minijuegoAcierto.gameObject.SetActive(true);
             minijuegoAcierto.AciertoAchieved(pointsEarned);
 
-            if (!raceQuestionsEnded)
-                PlayButtonsAnimation(true);
             //sube puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
         }
         else
@@ -191,8 +191,6 @@ public class WordSelection : MonoBehaviour
 
             wordsStorageScript.ResumeAnimations(false);
 
-            if (!raceQuestionsEnded)
-                PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
 
@@ -254,9 +252,6 @@ public class WordSelection : MonoBehaviour
 
         wordsStorageScript.ResumeAnimations(false);
 
-        if (!raceQuestionsEnded)
-            PlayButtonsAnimation(false);
-
         SetRaceSlider();
     }
 
@@ -264,9 +259,6 @@ public class WordSelection : MonoBehaviour
     {
         PlayEndAnimations();
         StartCoroutine(ShowScorePopUp());
-        //SE ACABA LA PARTIDA, hemos llegado meta
-        // animacion de llegar a meta y paramos preguntas
-        // despues ponemos pa poner nombre a puntuacion
     }
 
     private void PlayEndAnimations()
@@ -292,7 +284,8 @@ public class WordSelection : MonoBehaviour
     {
         yield return new WaitForSeconds(4.0f);
 
-        GameObject.Find("Ending").SetActive(true);
+        endingPopUp.SetActive(true);
+        endingPopUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = points + "Punts!!";
     }
 
 
