@@ -87,6 +87,11 @@ public class AciertoExtra : MonoBehaviour
 
         slider.gameObject.SetActive(false);
 
+        GetComponentInParent<WordsStorage>().ResumeAnimations(true);
+        GetComponentInParent<WordSelection>().PlayerMoving();
+
+        if(GetComponentInParent<WordSelection>().currentQuestionNum < 10)
+            GetComponentInParent<RandomWordMinigame>().WillActivateRandomWord();
     }
 
 }

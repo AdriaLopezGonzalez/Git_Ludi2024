@@ -30,7 +30,7 @@ public class RandomWordMinigame : MonoBehaviour
 
     float randomWordTimer;
     [SerializeField]
-    float timeToSelect = 3.0f;
+    float timeToSelect = 2.5f;
 
     public void WillActivateRandomWord()
     {
