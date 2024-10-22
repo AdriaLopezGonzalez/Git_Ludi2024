@@ -6,7 +6,19 @@ public class ScoreKeeper : MonoBehaviour
 
     Score[] scoreList = new Score[10];
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (GameController.GetGameController().scoreKeeper == null)
+        {
+            GameController.GetGameController().scoreKeeper = this;
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
+
     void Start()
     {
         /*
@@ -29,7 +41,6 @@ public class ScoreKeeper : MonoBehaviour
         */
     }
 
-    // Update is called once per frame
     void Update()
     {
 
