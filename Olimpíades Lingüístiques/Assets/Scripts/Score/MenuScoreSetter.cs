@@ -30,7 +30,6 @@ public class MenuScoreSetter : MonoBehaviour
         */
 
         firstPlace.text = scKeeper.GetNameOnPosition(1) + " " + scKeeper.GetScoreOnPosition(1);
-        Debug.Log(scKeeper.GetNameOnPosition(1) + " " + scKeeper.GetScoreOnPosition(1));
         secondPlace.text = scKeeper.GetNameOnPosition(2) + " " + scKeeper.GetScoreOnPosition(2);
         thirdPlace.text = scKeeper.GetNameOnPosition(3) + " " + scKeeper.GetScoreOnPosition(3);
 

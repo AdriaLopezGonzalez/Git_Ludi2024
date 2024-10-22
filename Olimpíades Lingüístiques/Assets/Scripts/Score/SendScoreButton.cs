@@ -19,7 +19,7 @@ public class SendScoreButton : MonoBehaviour
 
     public void SendToScoreKeeper()
     {
-        string newName = nameObject.GetComponent<TextMeshProUGUI>().text;
+        string newName = nameObject.GetComponent<TextMeshProUGUI>().text.ToUpper();
         int newScore = scoreCanvas.GetComponent<WordSelection>().GetPoints();
         scoreKeeper.EnterNewScore(newName, newScore);
 

@@ -8,6 +8,9 @@ public class ScoreKeeper : MonoBehaviour
 
     private void Awake()
     {
+        EnterNewScore("ESN", 500);
+        EnterNewScore("JCI", 100);
+        EnterNewScore("AFT", 1250);
         if (GameController.GetGameController().scoreKeeper == null)
         {
             GameController.GetGameController().scoreKeeper = this;
@@ -22,9 +25,6 @@ public class ScoreKeeper : MonoBehaviour
     void Start()
     {
         /*
-        EnterNewScore("GTS", 50);
-        EnterNewScore("TET", 550);
-        EnterNewScore("PTO", 100);
         EnterNewScore("FIT", 120);
         EnterNewScore("SOK", 90);
         EnterNewScore("KIK", 300);
