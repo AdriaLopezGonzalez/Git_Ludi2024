@@ -6,9 +6,14 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController = null;
 
+    public static bool alreadyInitializated = false;
+
     public ScoreKeeper scoreKeeper;
 
-    public static bool alreadyInitializated = false;
+    public bool daltonismIsActive;
+
+    public float musicVolume;
+    public float VoicesVolume;
 
     public static GameController GetGameController()
     {
