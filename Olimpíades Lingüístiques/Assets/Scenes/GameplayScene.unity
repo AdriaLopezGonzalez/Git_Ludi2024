@@ -4248,7 +4248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &650272630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4961,7 +4961,7 @@ Transform:
   m_GameObject: {fileID: 722198980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.669, y: -0.619, z: 0.55639267}
+  m_LocalPosition: {x: 3.669, y: -0.619, z: 0.5563927}
   m_LocalScale: {x: 0.098449, y: 0.098449, z: 0.098449}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6879,7 +6879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1124737272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8547,6 +8547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419002958}
   - component: {fileID: 1419002959}
+  - component: {fileID: 1419002960}
   m_Layer: 0
   m_Name: AllMap
   m_TagString: Untagged
@@ -8609,6 +8610,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1419002960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419002957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512e57cbb1bc44445b7c48bcc50be7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1421114779
 GameObject:
   m_ObjectHideFlags: 0

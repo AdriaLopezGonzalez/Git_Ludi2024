@@ -1,6 +1,8 @@
 using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class WordSelection : MonoBehaviour
 {
@@ -97,6 +99,7 @@ public class WordSelection : MonoBehaviour
 
         mainCharacter.transform.localPosition = new Vector3(whenMiddlePositionX, mainCharacter.transform.localPosition.y, mainCharacter.transform.localPosition.z);
         currentPosition = 2;
+
     }
 
     void Update()
@@ -158,9 +161,7 @@ public class WordSelection : MonoBehaviour
             minijuegoAcierto.gameObject.SetActive(true);
             minijuegoAcierto.AciertoAchieved(pointsEarned);
 
-            if (raceQuestionsEnded)
-                EndRace();
-            else
+            if (!raceQuestionsEnded)
                 PlayButtonsAnimation(true);
             //sube puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
         }
@@ -190,9 +191,7 @@ public class WordSelection : MonoBehaviour
 
             wordsStorageScript.ResumeAnimations(false);
 
-            if (raceQuestionsEnded)
-                EndRace();
-            else
+            if (!raceQuestionsEnded)
                 PlayButtonsAnimation(false);
             // reinicia multiplicador y animacion pierdes con evento que lleva a cambiar palabras
         }
@@ -255,22 +254,49 @@ public class WordSelection : MonoBehaviour
 
         wordsStorageScript.ResumeAnimations(false);
 
-        if (raceQuestionsEnded)
-            EndRace();
-        else
+        if (!raceQuestionsEnded)
             PlayButtonsAnimation(false);
 
         SetRaceSlider();
     }
 
-    private void EndRace()
+    public void EndRace()
     {
+        PlayEndAnimations();
+        StartCoroutine(ShowScorePopUp());
         //SE ACABA LA PARTIDA, hemos llegado meta
         // animacion de llegar a meta y paramos preguntas
         // despues ponemos pa poner nombre a puntuacion
     }
 
-    private void SetRaceSlider()
+    private void PlayEndAnimations()
+    {
+
+        if(currentPosition == 1) //Comprovem que hagi guanyat
+        {
+            GameObject.Find("CagaTio").GetComponent<Animator>().SetBool("Winner", true);
+            GameObject.Find("Calçot").GetComponent<Animator>().SetBool("Winner", false);
+        }
+        else
+        {
+            GameObject.Find("CagaTio").GetComponent<Animator>().SetBool("Winner", false);
+            GameObject.Find("Calçot").GetComponent<Animator>().SetBool("Winner", true);
+        }
+        GameObject.Find("Rovello").GetComponent<Animator>().SetTrigger("End");
+        GameObject.Find("Calçot").GetComponent<Animator>().SetTrigger("End");
+        GameObject.Find("CagaTio").GetComponent<Animator>().SetTrigger("End");
+
+    }
+
+    private IEnumerator ShowScorePopUp()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+        GameObject.Find("Ending").SetActive(true);
+    }
+
+
+        private void SetRaceSlider()
     {
         if (raceQuestionsEnded)
             raceSlider.value = raceSlider.maxValue;
@@ -318,4 +344,5 @@ public class WordSelection : MonoBehaviour
             playerMoving = false;
 
     }
+
 }
