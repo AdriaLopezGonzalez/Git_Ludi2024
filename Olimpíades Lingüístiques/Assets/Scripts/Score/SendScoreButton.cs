@@ -8,14 +8,19 @@ public class SendScoreButton : MonoBehaviour
 {
     [SerializeField] GameObject nameObject;
     [SerializeField] GameObject scoreCanvas;
-    [SerializeField] GameObject scoreKeeper;
+    ScoreKeeper scoreKeeper;
     [SerializeField] GameObject endingPopUp;
+
+    private void Start()
+    {
+        scoreKeeper = GameObject.FindAnyObjectByType<ScoreKeeper>();
+    }
 
     public void SendToScoreKeeper()
     {
         string newName = nameObject.GetComponent<TextMeshProUGUI>().text;
         int newScore = scoreCanvas.GetComponent<WordSelection>().GetPoints();
-        scoreKeeper.GetComponent<ScoreKeeper>().EnterNewScore(newName, newScore);
+        scoreKeeper.EnterNewScore(newName, newScore);
 
         endingPopUp.SetActive(false);
 
