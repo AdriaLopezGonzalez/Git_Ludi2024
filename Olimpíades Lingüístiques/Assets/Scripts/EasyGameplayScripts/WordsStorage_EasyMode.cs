@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WordsStorage : MonoBehaviour
+public class WordsStorage_EasyMode : MonoBehaviour
 {
     [SerializeField]
     TextAsset easyQuestionsData;
@@ -301,20 +301,17 @@ public class WordsStorage : MonoBehaviour
 
         enableButtons();
 
-        if (isRaceQuestionEasy[GetComponent<WordSelection>().currentQuestionNum])
+        if (isRaceQuestionEasy[GetComponent<WordSelection_EasyMode>().currentQuestionNum])
             EasyRandomWordSelector();
         else
             HardRandomWordSelector();
 
         StopAnimations();
-        //PARAR LAS ANIMACIONESSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-
-        GetComponent<WordSelection>().StartTimer();
     }
 
     public void CheckActiveButtons()
     {
-        if (isRaceQuestionEasy[GetComponent<WordSelection>().currentQuestionNum])
+        if (isRaceQuestionEasy[GetComponent<WordSelection_EasyMode>().currentQuestionNum])
         {
             twoButtons_Obj.SetActive(true);
             threeButtons_Obj.SetActive(false);

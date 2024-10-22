@@ -5,9 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    bool reducedVisibilityEnabled;
+    [SerializeField]
+    GameObject reducedVisibilitySelectedImage;
+
     private void Start()
     {
         GameController.GetGameController();
+
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            reducedVisibilityEnabled = GameController.GetGameController().reducedVisibilityIsActive;
+            if (reducedVisibilityEnabled)
+                reducedVisibilitySelectedImage.SetActive(true);
+        }
     }
 
     public void StartButtonPressed(bool easyMode)
@@ -26,5 +37,21 @@ public class MenuController : MonoBehaviour
     public void ExitButtonPressed()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void AudioHelpPressed()
+    {
+        if (reducedVisibilityEnabled)
+        {
+            reducedVisibilityEnabled = false;
+            reducedVisibilitySelectedImage.SetActive(false);
+        }
+        else
+        {
+            reducedVisibilityEnabled = true;
+            reducedVisibilitySelectedImage.SetActive(true);
+        }
+
+        GameController.GetGameController().reducedVisibilityIsActive = reducedVisibilityEnabled;
     }
 }
