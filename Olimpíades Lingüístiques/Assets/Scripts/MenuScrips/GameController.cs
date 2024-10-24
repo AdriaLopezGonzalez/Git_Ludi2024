@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     public bool daltonismIsActive;
 
+    public bool reducedVisibilityIsActive;
+
     public float musicVolume;
     public float VoicesVolume;
 
