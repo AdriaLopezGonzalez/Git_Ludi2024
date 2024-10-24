@@ -141,6 +141,7 @@ public class WordSelection : MonoBehaviour
 
         if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
+            StartCoroutine(ActivateButtonImage(true, buttonPressed));
 
             correctWordsStreak++;
             if (correctWordsStreak == 3)
@@ -167,11 +168,14 @@ public class WordSelection : MonoBehaviour
         }
         else
         {
+            StartCoroutine(ActivateButtonImage(false, buttonPressed));
 
             correctWordsStreak = 0;
             baseMultiplier = 1;
 
-            if(currentQuestionNum < 10)
+            baseMultiplierText.text = "X" + baseMultiplier.ToString();
+
+            if (currentQuestionNum < 10)
                 GetComponent<RandomWordMinigame>().WillActivateRandomWord();
 
             if (currentPosition < 3)
@@ -197,6 +201,41 @@ public class WordSelection : MonoBehaviour
 
         SetRaceSlider();
 
+    }
+
+    private IEnumerator ActivateButtonImage(bool correctAnswer, int buttonPressed)
+    {
+        if (correctAnswer)
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
+            else
+                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
+            else
+                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
+        if (correctAnswer)
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+            else
+                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+            else
+                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+        }
     }
 
     public void PlayerMoving()
@@ -234,6 +273,8 @@ public class WordSelection : MonoBehaviour
 
         correctWordsStreak = 0;
         baseMultiplier = 1;
+
+        baseMultiplierText.text = "X" + baseMultiplier.ToString();
 
         if (currentPosition < 3)
         {
