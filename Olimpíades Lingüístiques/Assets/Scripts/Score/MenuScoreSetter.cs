@@ -13,7 +13,7 @@ public class MenuScoreSetter : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("2");
+
         scKeeper = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeper>();
 
         /*

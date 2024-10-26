@@ -20,7 +20,6 @@ public class ScoreKeeper : MonoBehaviour
         EnterNewScore("ESN", 500);
         EnterNewScore("JCI", 100);
         EnterNewScore("AFT", 1250);
-        Debug.Log("1");
     }
 
     void Start()
