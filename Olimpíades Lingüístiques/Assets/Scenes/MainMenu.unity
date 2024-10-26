@@ -8529,6 +8529,7 @@ GameObject:
   - component: {fileID: 1595258697}
   - component: {fileID: 1595258696}
   - component: {fileID: 1595258695}
+  - component: {fileID: 1595258699}
   m_Layer: 5
   m_Name: CanvasLetrero
   m_TagString: Untagged
@@ -8619,6 +8620,22 @@ RectTransform:
   m_AnchoredPosition: {x: -18.87, y: -0.75}
   m_SizeDelta: {x: 1376, y: 774}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1595258699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595258694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c727372234329945aab22c5686fb1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPlace: {fileID: 881170822}
+  secondPlace: {fileID: 1066590805}
+  thirdPlace: {fileID: 1999763859}
+  otherPlaces: {fileID: 634238797}
 --- !u!1001 &1598261047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9178,6 +9195,7 @@ Transform:
   - {fileID: 1116288203}
   - {fileID: 1760074898}
   - {fileID: 848725542}
+  - {fileID: 2092691891}
   m_Father: {fileID: 640307841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1719885365
@@ -11270,8 +11288,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092691890}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.63, y: -4.05, z: 8.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.25, y: -2.7239394, z: 8.856393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11283,7 +11301,7 @@ Transform:
   - {fileID: 1816175201}
   - {fileID: 189203332}
   - {fileID: 1094647778}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1714173899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2099332093
 PrefabInstance:
@@ -11440,4 +11458,3 @@ SceneRoots:
   - {fileID: 640307841}
   - {fileID: 1595258698}
   - {fileID: 1139076788}
-  - {fileID: 2092691891}
