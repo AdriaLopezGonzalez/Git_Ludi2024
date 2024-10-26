@@ -326,7 +326,7 @@ public class WordSelection : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
 
         endingPopUp.SetActive(true);
-        endingPopUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = points + " Punts!!";
+        endingPopUp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = points.ToString();
     }
 
 
