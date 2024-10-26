@@ -1323,8 +1323,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 1}
+    m_PressedColor: {r: 0.37106913, g: 0.37106913, b: 0.37106913, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0755babf8c0ca8643b13dec2572c8eb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e07d5f6d098b0514092d3dccb986caab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7497,7 +7497,7 @@ Transform:
   m_GameObject: {fileID: 959130714}
   serializedVersion: 2
   m_LocalRotation: {x: 0.33507204, y: -0, z: -0, w: 0.9421925}
-  m_LocalPosition: {x: 92.79, y: -0.75, z: 19.05}
+  m_LocalPosition: {x: 92.79, y: -0.8, z: 19.05}
   m_LocalScale: {x: 0.16884097, y: 0.16884097, z: 0.16884097}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12317,8 +12317,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+    m_PressedColor: {r: 0.63522005, g: 0.63522005, b: 0.63522005, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -14504,8 +14504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2927e1a791adc4d9668a3d0149835f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyQuestionsData: {fileID: 4900000, guid: 9dd1dc3537b67d541af98098c8afd4a3, type: 3}
-  hardQuestionsData: {fileID: 4900000, guid: 78b8908b2bad55041a3e79c2472dedec, type: 3}
+  easyQuestionsData: {fileID: 4900000, guid: d58220b225ccbd341b018f212c428134, type: 3}
+  hardQuestionsData: {fileID: 4900000, guid: 90096952a6c7324409b5ac86522fbe2f, type: 3}
   twoButtons_Obj: {fileID: 760407417}
   threeButtons_Obj: {fileID: 1011173450}
   easyQuestionsNumber: 5
@@ -14547,7 +14547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218b835f38add240a72ece832f43035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomWordsData: {fileID: 4900000, guid: 949f215d646c6f241909ae7fd74b7fd5, type: 3}
+  randomWordsData: {fileID: 4900000, guid: 8d2419730905f1b49a82d45c44814c71, type: 3}
   firstPosition: {fileID: 917124828}
   secondPosition: {fileID: 218804917}
   randomWordsButton: {fileID: 515545423}
@@ -15430,8 +15430,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.74213827, g: 0.74213827, b: 0.74213827, a: 1}
+    m_PressedColor: {r: 0.27044016, g: 0.27044016, b: 0.27044016, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
