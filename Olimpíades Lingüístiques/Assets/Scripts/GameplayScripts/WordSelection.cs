@@ -205,37 +205,28 @@ public class WordSelection : MonoBehaviour
 
     private IEnumerator ActivateButtonImage(bool correctAnswer, int buttonPressed)
     {
-        if (correctAnswer)
-        {
-            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
-            else
-                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
-        }
-        else
-        {
-            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
-            else
-                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject.SetActive(true);
-        }
-
-        yield return new WaitForSeconds(2.0f);
+        GameObject ButtonGO;
 
         if (correctAnswer)
         {
             if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+                ButtonGO = GetComponent<WordsStorage>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
             else
-                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+                ButtonGO = GetComponent<WordsStorage>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
         }
         else
         {
             if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                GetComponent<WordsStorage>().twoButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+                ButtonGO = GetComponent<WordsStorage>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
             else
-                GetComponent<WordsStorage>().threeButtons_Obj.GetComponentInChildren<GameObject>().transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject.SetActive(true);
+                ButtonGO = GetComponent<WordsStorage>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
         }
+
+        ButtonGO.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        ButtonGO.SetActive(false);
     }
 
     public void PlayerMoving()
