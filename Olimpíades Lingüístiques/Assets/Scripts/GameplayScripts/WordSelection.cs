@@ -93,7 +93,7 @@ public class WordSelection : MonoBehaviour
         timeSlider.value = timeSlider.maxValue;
         timeSlider.enabled = false;
         points = 0;
-        pointsText.text = points.ToString() + " Punts";
+        pointsText.text = points.ToString();
         baseMultiplierText.text = "X" + baseMultiplier.ToString();
         buttonsAnimator = GetComponent<Animation>();
         raceSlider.maxValue = wordsStorageScript.GetMaxQuestions();
@@ -159,7 +159,7 @@ public class WordSelection : MonoBehaviour
                 pointsEarned = (int)(hardPointIncrease * baseMultiplier);
 
             points += pointsEarned;
-            pointsText.text = points.ToString() + " Punts";
+            pointsText.text = points.ToString();
 
             minijuegoAcierto.gameObject.SetActive(true);
             minijuegoAcierto.AciertoAchieved(pointsEarned);
@@ -357,7 +357,7 @@ public class WordSelection : MonoBehaviour
     {
         points += newPoints;
 
-        pointsText.text = points.ToString() + " Punts";
+        pointsText.text = points.ToString();
     }
 
     private void MovePlayer()
