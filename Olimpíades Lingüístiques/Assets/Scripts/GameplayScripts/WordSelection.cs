@@ -217,9 +217,9 @@ public class WordSelection : MonoBehaviour
         else
         {
             if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
-                ButtonGO = GetComponent<WordsStorage>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
+                ButtonGO = GetComponent<WordsStorage>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject;
             else
-                ButtonGO = GetComponent<WordsStorage>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
+                ButtonGO = GetComponent<WordsStorage>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject;
         }
 
         ButtonGO.SetActive(true);
