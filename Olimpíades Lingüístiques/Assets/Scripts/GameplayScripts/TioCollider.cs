@@ -18,7 +18,7 @@ public class TioCollider : MonoBehaviour
         if(other.gameObject.tag == "Fence")
         {
             wStorage.NextQuestion();
-            //other.enabled = false;
+            other.enabled = false;
         }
     }
 }

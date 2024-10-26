@@ -13,9 +13,9 @@ public class WordsStorage : MonoBehaviour
     TextAsset hardQuestionsData;
 
     [SerializeField]
-    GameObject twoButtons_Obj;
+    public GameObject twoButtons_Obj;
     [SerializeField]
-    GameObject threeButtons_Obj;
+    public GameObject threeButtons_Obj;
 
     string[,] easyQuestions;
     string[,] hardQuestions;
