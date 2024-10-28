@@ -6,10 +6,14 @@ public class TioCollider : MonoBehaviour
 {
 
     WordsStorage wStorage;
+    WordsStorage_EasyMode wStorageEasy;
 
     private void Start()
     {
-        wStorage = GameObject.Find("Canvas").GetComponent<WordsStorage>();
+        if (GameObject.Find("Canvas").GetComponent<WordsStorage>())
+            wStorage = GameObject.Find("Canvas").GetComponent<WordsStorage>();
+        else
+            wStorageEasy = GameObject.Find("Canvas").GetComponent<WordsStorage_EasyMode>();
     }
 
     // Start is called before the first frame update
@@ -17,7 +21,10 @@ public class TioCollider : MonoBehaviour
     {
         if(other.gameObject.tag == "Fence")
         {
-            wStorage.NextQuestion();
+            if (!ReferenceEquals(wStorage, null))
+                wStorage.NextQuestion();
+            else
+                wStorageEasy.NextQuestion();
             other.enabled = false;
         }
     }

@@ -6,6 +6,9 @@ public class MapAnimationEnd : MonoBehaviour
 {
     public void EndRace()
     {
-        GameObject.FindAnyObjectByType<WordSelection>().EndRace();
+        if(GameObject.FindAnyObjectByType<WordSelection>())
+            GameObject.FindAnyObjectByType<WordSelection>().EndRace();
+        else
+            GameObject.FindAnyObjectByType<WordSelection_EasyMode>().EndRace();
     }
 }

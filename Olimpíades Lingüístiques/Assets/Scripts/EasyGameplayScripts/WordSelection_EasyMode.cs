@@ -66,7 +66,7 @@ public class WordSelection_EasyMode : MonoBehaviour
     {
         wordsStorageScript = GetComponent<WordsStorage_EasyMode>();
         points = 0;
-        pointsText.text = points.ToString() + " Punts";
+        pointsText.text = points.ToString();
         baseMultiplierText.text = "X" + baseMultiplier.ToString();
         buttonsAnimator = GetComponent<Animation>();
         raceSlider.maxValue = wordsStorageScript.GetMaxQuestions();
@@ -100,7 +100,7 @@ public class WordSelection_EasyMode : MonoBehaviour
 
         if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
-
+            StartCoroutine(ActivateButtonImage(true, buttonPressed));
             correctWordsStreak++;
             if (correctWordsStreak == 3)
                 baseMultiplier = 2f;
@@ -117,12 +117,15 @@ public class WordSelection_EasyMode : MonoBehaviour
                 pointsEarned = (int)(hardPointIncrease * baseMultiplier);
 
             points += pointsEarned;
-            pointsText.text = points.ToString() + " Punts";
+            pointsText.text = points.ToString();
+
+            wordsStorageScript.ResumeAnimations(true);
+            PlayerMoving();
             //sube puntos, aumenta multimplicador con x aciertos y animacion ganas con evento que lleva a cambiar palabras
         }
         else
         {
-
+            StartCoroutine(ActivateButtonImage(false, buttonPressed));
             correctWordsStreak = 0;
             baseMultiplier = 1;
 
@@ -149,6 +152,32 @@ public class WordSelection_EasyMode : MonoBehaviour
 
         SetRaceSlider();
 
+    }
+
+    private IEnumerator ActivateButtonImage(bool correctAnswer, int buttonPressed)
+    {
+        GameObject ButtonGO;
+
+        if (correctAnswer)
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                ButtonGO = GetComponent<WordsStorage_EasyMode>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
+            else
+                ButtonGO = GetComponent<WordsStorage_EasyMode>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(1).gameObject;
+        }
+        else
+        {
+            if (wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1])
+                ButtonGO = GetComponent<WordsStorage_EasyMode>().twoButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject;
+            else
+                ButtonGO = GetComponent<WordsStorage_EasyMode>().threeButtons_Obj.transform.GetChild(buttonPressed - 1).transform.GetChild(2).gameObject;
+        }
+
+        ButtonGO.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        ButtonGO.SetActive(false);
     }
 
     public void PlayerMoving()
@@ -210,7 +239,7 @@ public class WordSelection_EasyMode : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
 
         endingPopUp.SetActive(true);
-        endingPopUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = points + " Punts!!";
+        endingPopUp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = points.ToString();
     }
 
 
@@ -250,7 +279,7 @@ public class WordSelection_EasyMode : MonoBehaviour
     {
         points += newPoints;
 
-        pointsText.text = points.ToString() + " Punts";
+        pointsText.text = points.ToString();
     }
 
     private void MovePlayer()
