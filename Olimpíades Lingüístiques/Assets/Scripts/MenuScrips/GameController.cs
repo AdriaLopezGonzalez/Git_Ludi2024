@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     public ScoreKeeper scoreKeeper;
 
+    public AudioManager audioManager;
+
     public bool daltonismIsActive;
 
     public bool reducedVisibilityIsActive;

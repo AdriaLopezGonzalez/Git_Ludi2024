@@ -18,7 +18,6 @@ public class SettingsController : MonoBehaviour
 
     bool daltonismIsActive = false;
 
-
     void Start()
     {
         voicesVolume = GameController.GetGameController().VoicesVolume;
