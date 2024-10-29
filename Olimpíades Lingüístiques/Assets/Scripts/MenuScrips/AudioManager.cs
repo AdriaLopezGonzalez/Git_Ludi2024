@@ -11,6 +11,19 @@ public class AudioManager : MonoBehaviour
 
     [Header("AudioClips")]
     public AudioClip backgroundMusic;
+    
+    public AudioClip[] easyQuestionsAudiosRow1;
+    public AudioClip[] easyQuestionsAudiosRow2;
+
+    public AudioClip[] hardQuestionsAudiosRow1;
+    public AudioClip[] hardQuestionsAudiosRow2;
+    public AudioClip[] hardQuestionsAudiosRow3;
+
+    public AudioClip settingsClip;
+    public AudioClip playEasyModeClip;
+    public AudioClip helpClip;
+    public AudioClip modeNotEnabledClip;
+    public AudioClip exitClip;
 
     private void Awake()
     {
@@ -29,5 +42,20 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.clip = backgroundMusic;
         musicSource.Play();
+    }
+
+    public void SetVolumes(float voicesVolume, float musicVolume)
+    {
+        voicesSource.volume = voicesVolume;
+        musicSource.volume = musicVolume;
+    }
+
+    public void PlayAudioCLip(AudioClip audioClip)
+    {
+        if (GameController.GetGameController().reducedVisibilityIsActive)
+        {
+            voicesSource.clip = audioClip;
+            voicesSource.Play();
+        }
     }
 }

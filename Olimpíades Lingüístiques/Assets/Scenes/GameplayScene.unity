@@ -3549,6 +3549,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6839886322160178247, guid: a6cf82923a7a36a4fbb9cbb17247f49f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.026165737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839886322160178247, guid: a6cf82923a7a36a4fbb9cbb17247f49f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8876093
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839886322160178247, guid: a6cf82923a7a36a4fbb9cbb17247f49f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

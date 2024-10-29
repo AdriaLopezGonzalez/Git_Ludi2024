@@ -25,6 +25,8 @@ public class SettingsController : MonoBehaviour
         musicVolume = GameController.GetGameController().musicVolume;
         musicSlider.value = musicVolume;
 
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes( voicesVolume, musicVolume);
+
         daltonismIsActive = GameController.GetGameController().daltonismIsActive;
         if (daltonismIsActive)
             daltonismSelectedImage.SetActive(true);
@@ -35,6 +37,8 @@ public class SettingsController : MonoBehaviour
         voicesVolume = newVoicesVolume;
 
         GameController.GetGameController().VoicesVolume = voicesVolume;
+
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes(voicesVolume, musicVolume);
     }
 
     public void MusicVolumeLevel(float newMusicVolume)
@@ -42,6 +46,8 @@ public class SettingsController : MonoBehaviour
         musicVolume = newMusicVolume;
 
         GameController.GetGameController().musicVolume = musicVolume;
+
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes(voicesVolume, musicVolume);
     }
 
     public void buttonDaltonismSelected()

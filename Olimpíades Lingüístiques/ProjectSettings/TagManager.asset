@@ -7,6 +7,7 @@ TagManager:
   - Fence
   - GoodImage
   - BadImage
+  - AudioManager
   layers:
   - Default
   - TransparentFX
