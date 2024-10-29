@@ -1273,6 +1273,7 @@ GameObject:
   - component: {fileID: 161200243}
   - component: {fileID: 161200242}
   - component: {fileID: 161200241}
+  - component: {fileID: 161200244}
   m_Layer: 5
   m_Name: ButtonExit
   m_TagString: Untagged
@@ -1395,6 +1396,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161200239}
   m_CullTransparentMesh: 1
+--- !u!114 &161200244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161200239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1895607381}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: OverTheButtonSound
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 697fa65ca2f87b6479af36b16ef899bf, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &165708407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2166,7 @@ GameObject:
   - component: {fileID: 268871188}
   - component: {fileID: 268871187}
   - component: {fileID: 268871186}
+  - component: {fileID: 268871189}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
@@ -2259,6 +2290,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268871184}
   m_CullTransparentMesh: 1
+--- !u!114 &268871189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268871184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1895607383}
+          m_TargetAssemblyTypeName: WordsStorage_EasyMode, Assembly-CSharp
+          m_MethodName: OverButtonSound
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &280029540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9948,6 +10008,7 @@ GameObject:
   - component: {fileID: 1218309786}
   - component: {fileID: 1218309785}
   - component: {fileID: 1218309784}
+  - component: {fileID: 1218309787}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -10071,6 +10132,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218309782}
   m_CullTransparentMesh: 1
+--- !u!114 &1218309787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218309782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1895607383}
+          m_TargetAssemblyTypeName: WordsStorage_EasyMode, Assembly-CSharp
+          m_MethodName: OverButtonSound
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1231467327
 GameObject:
   m_ObjectHideFlags: 0

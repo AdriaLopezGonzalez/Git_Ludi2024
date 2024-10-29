@@ -44,7 +44,12 @@ public class WordsStorage_EasyMode : MonoBehaviour
     [SerializeField]
     Button rightButton_HardWords;
 
+    bool buttonsEnabled = true;
+
     int correctButton;
+    int rowNum;
+
+    AudioManager audioManager;
 
     public int GetCorrectButton()
     {
@@ -58,6 +63,8 @@ public class WordsStorage_EasyMode : MonoBehaviour
         leftButton_HardWords.interactable = false;
         middleButton_HardWords.interactable = false;
         rightButton_HardWords.interactable = false;
+
+        buttonsEnabled = false;
     }
     public void enableButtons()
     {
@@ -66,10 +73,14 @@ public class WordsStorage_EasyMode : MonoBehaviour
         leftButton_HardWords.interactable = true;
         middleButton_HardWords.interactable = true;
         rightButton_HardWords.interactable = true;
+
+        buttonsEnabled = true;
     }
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         SetEasyQuestions();
         SetHardQuestions();
         SetRaceQuestionsType();
@@ -172,6 +183,8 @@ public class WordsStorage_EasyMode : MonoBehaviour
         }
         usedEasyRows.Add(randomQuestionRow);
 
+        rowNum = randomQuestionRow;
+
         if (usedEasyRows.Count >= easyQuestions.GetLength(0))
             usedEasyRows.Clear();
 
@@ -201,6 +214,8 @@ public class WordsStorage_EasyMode : MonoBehaviour
             randomQuestionRow = UnityEngine.Random.Range(0, hardQuestions.GetLength(0));
         }
         usedHardRows.Add(randomQuestionRow);
+
+        rowNum = randomQuestionRow;
 
         if (usedHardRows.Count >= hardQuestions.GetLength(0))
             usedHardRows.Clear();
@@ -255,6 +270,35 @@ public class WordsStorage_EasyMode : MonoBehaviour
             correctButton = 3;
         }
 
+    }
+
+    public void OverButtonSound(int buttonPressed)
+    {
+        if (buttonsEnabled)
+        {
+            if (isRaceQuestionEasy[GetComponent<WordSelection_EasyMode>().currentQuestionNum])
+            {
+                if (buttonPressed == correctButton)
+                {
+                    audioManager.PlayAudioCLip(audioManager.easyQuestionsAudiosRow1[rowNum]);
+                }
+                else
+                {
+                    audioManager.PlayAudioCLip(audioManager.easyQuestionsAudiosRow2[rowNum]);
+                }
+            }
+            else
+            {
+                if (buttonPressed == correctButton)
+                {
+                    audioManager.PlayAudioCLip(audioManager.hardQuestionsAudiosRow1[rowNum]);
+                }
+                else
+                {
+                    audioManager.PlayAudioCLip(audioManager.hardQuestionsAudiosRow2[rowNum]);
+                }
+            }
+        }
     }
 
     /*

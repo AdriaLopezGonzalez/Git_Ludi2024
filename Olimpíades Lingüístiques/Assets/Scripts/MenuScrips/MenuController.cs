@@ -26,7 +26,10 @@ public class MenuController : MonoBehaviour
         if (easyMode)
             SceneManager.LoadScene("EasyGameplayScene");
         else
-            SceneManager.LoadScene("GameplayScene");
+        {
+            if(!GameController.GetGameController().reducedVisibilityIsActive)
+                SceneManager.LoadScene("GameplayScene");
+        }
     }
 
     public void SettingsButtonPressed()
@@ -53,5 +56,10 @@ public class MenuController : MonoBehaviour
         }
 
         GameController.GetGameController().reducedVisibilityIsActive = reducedVisibilityEnabled;
+    }
+
+    public void OverTheButtonSound(AudioClip audioClip)
+    {
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayAudioCLip(audioClip);
     }
 }

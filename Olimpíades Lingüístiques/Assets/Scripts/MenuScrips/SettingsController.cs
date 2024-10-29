@@ -10,22 +10,26 @@ public class SettingsController : MonoBehaviour
     [SerializeField]
     Slider musicSlider;
 
-    float voicesVolume;
-    float musicVolume;
+    float voicesVolume = 0.5f;
+    float musicVolume = 0.5f;
 
     [SerializeField]
     GameObject daltonismSelectedImage;
 
     bool daltonismIsActive = false;
 
+    private AudioManager audioManager;
+
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         voicesVolume = GameController.GetGameController().VoicesVolume;
         voicesSlider.value = voicesVolume;
         musicVolume = GameController.GetGameController().musicVolume;
         musicSlider.value = musicVolume;
 
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes( voicesVolume, musicVolume);
+        audioManager.SetVolumes( voicesVolume, musicVolume);
 
         daltonismIsActive = GameController.GetGameController().daltonismIsActive;
         if (daltonismIsActive)
@@ -34,11 +38,13 @@ public class SettingsController : MonoBehaviour
 
     public void VoicesVolumeLevel(float newVoicesVolume)
     {
+        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayAudioCLip(audioManager.volumeChangedAudio);
+
         voicesVolume = newVoicesVolume;
 
         GameController.GetGameController().VoicesVolume = voicesVolume;
 
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes(voicesVolume, musicVolume);
+        audioManager.SetVolumes(voicesVolume, musicVolume);
     }
 
     public void MusicVolumeLevel(float newMusicVolume)
@@ -47,7 +53,7 @@ public class SettingsController : MonoBehaviour
 
         GameController.GetGameController().musicVolume = musicVolume;
 
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SetVolumes(voicesVolume, musicVolume);
+        audioManager.SetVolumes(voicesVolume, musicVolume);
     }
 
     public void buttonDaltonismSelected()

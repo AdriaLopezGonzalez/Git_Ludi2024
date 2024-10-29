@@ -19,11 +19,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] hardQuestionsAudiosRow2;
     public AudioClip[] hardQuestionsAudiosRow3;
 
-    public AudioClip settingsClip;
-    public AudioClip playEasyModeClip;
-    public AudioClip helpClip;
-    public AudioClip modeNotEnabledClip;
+    //public AudioClip settingsClip;
+    //public AudioClip playEasyModeClip;
+    //public AudioClip helpClip;
+    //public AudioClip modeNotEnabledClip;
+    public AudioClip volumeChangedAudio;
     public AudioClip exitClip;
+    public AudioClip correcteClip;
+    public AudioClip ErroniClip;
 
     private void Awake()
     {
