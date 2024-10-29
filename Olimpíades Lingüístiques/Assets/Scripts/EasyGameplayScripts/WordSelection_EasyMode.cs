@@ -223,11 +223,19 @@ public class WordSelection_EasyMode : MonoBehaviour
         {
             GameObject.Find("CagaTio").GetComponent<Animator>().SetBool("Winner", true);
             GameObject.Find("Calçot").GetComponent<Animator>().SetBool("Winner", false);
+
+            audioManager.PlayAudioCLip(audioManager.firstPositionClip);
         }
         else
         {
             GameObject.Find("CagaTio").GetComponent<Animator>().SetBool("Winner", false);
             GameObject.Find("Calçot").GetComponent<Animator>().SetBool("Winner", true);
+
+            if(currentPosition == 2)
+                audioManager.PlayAudioCLip(audioManager.secondPositionClip);
+            else
+                audioManager.PlayAudioCLip(audioManager.thirdPositionClip);
+
         }
         GameObject.Find("Rovello").GetComponent<Animator>().SetTrigger("End");
         GameObject.Find("Calçot").GetComponent<Animator>().SetTrigger("End");

@@ -28,6 +28,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip correcteClip;
     public AudioClip ErroniClip;
 
+    public AudioClip firstPositionClip;
+    public AudioClip secondPositionClip;
+    public AudioClip thirdPositionClip;
+
     private void Awake()
     {
         if (GameController.GetGameController().audioManager == null)

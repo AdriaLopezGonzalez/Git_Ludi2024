@@ -6769,6 +6769,9 @@ MonoBehaviour:
   exitClip: {fileID: 8300000, guid: 697fa65ca2f87b6479af36b16ef899bf, type: 3}
   correcteClip: {fileID: 8300000, guid: 1f3473f469dd3da42a2bfa8affff0e8a, type: 3}
   ErroniClip: {fileID: 8300000, guid: 67eb8abe32a133f4da6cba0229cd5901, type: 3}
+  firstPositionClip: {fileID: 8300000, guid: 2b2ac82c8876b4b499fd6d6e6178eac3, type: 3}
+  secondPositionClip: {fileID: 8300000, guid: 929d36291b42aba4db60dba9db9dc450, type: 3}
+  thirdPositionClip: {fileID: 8300000, guid: 07fc167335dd385409e660de45a251de, type: 3}
 --- !u!4 &884460925
 Transform:
   m_ObjectHideFlags: 0
