@@ -1,20 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InstruccionsPopUp : MonoBehaviour
 {
+    bool started = false;
+
     [SerializeField] Button button1;
     [SerializeField] Button button2;
     [SerializeField] Button button3;
 
     void Start()
     {
-        button1.interactable = false;
-        button2.interactable = false;
-        button3.interactable = false;
+        if (!started)
+        {
+
+            button1.interactable = false;
+            button2.interactable = false;
+            button3.interactable = false;
+        }
+        else
+            gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class InstruccionsPopUp : MonoBehaviour
         button1.interactable = true;
         button2.interactable = true;
         button3.interactable = true;
+        started = true;
         gameObject.SetActive(false);
     }
 }
