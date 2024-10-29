@@ -60,7 +60,7 @@ public class RandomWordMinigame : MonoBehaviour
 
     private IEnumerator WaitUntilActivate()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         ActivateRandomWord();
     }

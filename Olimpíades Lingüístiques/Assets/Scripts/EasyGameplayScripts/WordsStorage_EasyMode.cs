@@ -48,6 +48,7 @@ public class WordsStorage_EasyMode : MonoBehaviour
 
     int correctButton;
     int rowNum;
+    int incorrectButtonWithCol2;
 
     AudioManager audioManager;
 
@@ -228,11 +229,15 @@ public class WordsStorage_EasyMode : MonoBehaviour
             {
                 middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
                 rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+
+                incorrectButtonWithCol2 = 2;
             }
             else
             {
                 middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
                 rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+
+                incorrectButtonWithCol2 = 3;
             }
 
             correctButton = 1;
@@ -244,11 +249,15 @@ public class WordsStorage_EasyMode : MonoBehaviour
             {
                 leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
                 rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+
+                incorrectButtonWithCol2 = 1;
             }
             else
             {
                 leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
                 rightButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+
+                incorrectButtonWithCol2 = 3;
             }
 
             correctButton = 2;
@@ -260,11 +269,15 @@ public class WordsStorage_EasyMode : MonoBehaviour
             {
                 leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
                 middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
+
+                incorrectButtonWithCol2 = 1;
             }
             else
             {
                 leftButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 2];
                 middleButton_HardWords.GetComponentInChildren<TMP_Text>().text = hardQuestions[randomQuestionRow, 1];
+
+                incorrectButtonWithCol2 = 2;
             }
 
             correctButton = 3;
@@ -293,9 +306,13 @@ public class WordsStorage_EasyMode : MonoBehaviour
                 {
                     audioManager.PlayAudioCLip(audioManager.hardQuestionsAudiosRow1[rowNum]);
                 }
-                else
+                else if(buttonPressed == incorrectButtonWithCol2)
                 {
                     audioManager.PlayAudioCLip(audioManager.hardQuestionsAudiosRow2[rowNum]);
+                }
+                else
+                {
+                    audioManager.PlayAudioCLip(audioManager.hardQuestionsAudiosRow3[rowNum]);
                 }
             }
         }

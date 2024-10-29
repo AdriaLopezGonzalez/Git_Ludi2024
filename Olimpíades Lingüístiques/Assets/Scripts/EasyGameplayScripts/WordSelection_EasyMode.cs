@@ -52,6 +52,8 @@ public class WordSelection_EasyMode : MonoBehaviour
     [SerializeField]
     AnimationClip wrongAnswerHardAnimation;
 
+    AudioManager audioManager;
+
     public void updateMultiplier(int addingValue, bool retunToBase)
     {
         if (!retunToBase)
@@ -64,6 +66,8 @@ public class WordSelection_EasyMode : MonoBehaviour
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         wordsStorageScript = GetComponent<WordsStorage_EasyMode>();
         points = 0;
         pointsText.text = points.ToString();
@@ -90,16 +94,18 @@ public class WordSelection_EasyMode : MonoBehaviour
     {
         wordsStorageScript.disableButtons();
 
-        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length - 1)
+        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length)
         {
             currentQuestionNum++;
-            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1];
         }
         else
             raceQuestionsEnded = true;
 
         if (wordsStorageScript.GetCorrectButton() == buttonPressed)
         {
+            audioManager.PlayAudioCLip(audioManager.correcteClip);
+
             StartCoroutine(ActivateButtonImage(true, buttonPressed));
             correctWordsStreak++;
             if (correctWordsStreak == 3)
@@ -125,6 +131,8 @@ public class WordSelection_EasyMode : MonoBehaviour
         }
         else
         {
+            audioManager.PlayAudioCLip(audioManager.ErroniClip);
+
             StartCoroutine(ActivateButtonImage(false, buttonPressed));
             correctWordsStreak = 0;
             baseMultiplier = 1;

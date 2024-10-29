@@ -131,10 +131,10 @@ public class WordSelection : MonoBehaviour
         StopTimer();
         wordsStorageScript.disableButtons();
 
-        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length - 1)
+        if (currentQuestionNum < wordsStorageScript.isRaceQuestionEasy.Length)
         {
             currentQuestionNum++;
-            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum];
+            changeToHard = !wordsStorageScript.isRaceQuestionEasy[currentQuestionNum - 1];
         }
         else
             raceQuestionsEnded = true;
