@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
 
     public bool reducedVisibilityIsActive;
 
+    public bool alreadyShownInstructions = false;
+
     public float musicVolume = 0.5f;
     public float VoicesVolume = 0.5f;
 

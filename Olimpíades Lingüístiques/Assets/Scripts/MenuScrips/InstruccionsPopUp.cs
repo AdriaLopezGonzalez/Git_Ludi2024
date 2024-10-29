@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class InstruccionsPopUp : MonoBehaviour
 {
-    bool started = false;
 
     [SerializeField] Button button1;
     [SerializeField] Button button2;
@@ -11,7 +10,7 @@ public class InstruccionsPopUp : MonoBehaviour
 
     void Start()
     {
-        if (!started)
+        if (!GameController.GetGameController().alreadyShownInstructions)
         {
 
             button1.interactable = false;
@@ -34,7 +33,7 @@ public class InstruccionsPopUp : MonoBehaviour
         button1.interactable = true;
         button2.interactable = true;
         button3.interactable = true;
-        started = true;
+        GameController.GetGameController().alreadyShownInstructions = true;
         gameObject.SetActive(false);
     }
 }
