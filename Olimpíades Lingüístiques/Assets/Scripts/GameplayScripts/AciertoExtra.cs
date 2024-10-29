@@ -73,8 +73,8 @@ public class AciertoExtra : MonoBehaviour
             GoBack(0);
         }
 
-        GetComponentInParent<RandomWordMinigame>().WillActivateRandomWord();
-
+        if(FindAnyObjectByType<WordSelection>().currentQuestionNum < 10)
+            GetComponentInParent<RandomWordMinigame>().WillActivateRandomWord();
     }
 
     private void GoBack(int newPoints)
